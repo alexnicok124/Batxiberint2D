@@ -5,17 +5,21 @@ using Pathfinding;
 
 public class SoundEnemyAI : MonoBehaviour
 {
+    [Header("Pathfinding")]
     public Transform target;
-    public float speed = 200f;
     public float maxDetectionRange;
+    public float maxDistanceFromPlayer;
     public float nextWaypointDistance = 0.44f;
     public float pathSearchCooldown = 0.5f;
-    private float nextSearch = 0f;
-    public bool showGizmos = false;
+
+
+    [Header("Physics")]
+    public float speed = 200f;
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
+    float nextSearch = 0f;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -30,7 +34,6 @@ public class SoundEnemyAI : MonoBehaviour
     }
 
     // Update the path of the enemy
-
     void UpdatePath()
     {
         if (seeker.IsDone())
@@ -57,31 +60,15 @@ public class SoundEnemyAI : MonoBehaviour
             UpdatePath();
             nextSearch = Time.time + pathSearchCooldown;
         }
-        if (showGizmos)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(rb.position, maxDetectionRange);
-        }
 
-        if (path == null)
-        {
-            return;
-        }
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
-
+        //Aplicar una fuerza
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        
         Vector2 force = direction * speed * Time.deltaTime;
+        if (Vector2.Distance(rb.position, target.position) > maxDistanceFromPlayer)
+        {
+            rb.AddForce(force);
+        }
         
-        rb.AddForce(force);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)

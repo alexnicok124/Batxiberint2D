@@ -266,7 +266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &359808166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,11 +280,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1137581007}
-  speed: 400
   maxDetectionRange: 5
+  maxDistanceFromPlayer: 0
   nextWaypointDistance: 0.5
   pathSearchCooldown: 0.5
-  showGizmos: 0
+  speed: 400
 --- !u!114 &359808167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.5
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -827,7 +827,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.5
+  m_LinearDrag: 2.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -882,11 +882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1137581007}
-  speed: 400
   maxDetectionRange: 5
+  maxDistanceFromPlayer: 1
   nextWaypointDistance: 0.5
   pathSearchCooldown: 0.5
-  showGizmos: 0
+  speed: 400
 --- !u!58 &721442771
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1586,7 +1586,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

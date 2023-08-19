@@ -5,18 +5,22 @@ using Pathfinding;
 
 public class LookEnemyAI : MonoBehaviour
 {
+    [Header("Pathfinding")]
     public Transform target;
-    public float speed = 200f;
     public float maxDetectionRange;
+    public float maxDistanceFromPlayer;
     public float nextWaypointDistance = 0.44f;
     public float pathSearchCooldown = 0.5f;
-    private float nextSearch = 0f;
     public LayerMask layerMask;
-    
+
+
+    [Header("Physics")]
+    public float speed = 200f;
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
+    float nextSearch = 0f;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -83,8 +87,11 @@ public class LookEnemyAI : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         
         Vector2 force = direction * speed * Time.deltaTime;
-        
-        rb.AddForce(force);
+
+        if (Vector2.Distance(rb.position, target.position) > maxDistanceFromPlayer)
+        {
+            rb.AddForce(force);
+        }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)
