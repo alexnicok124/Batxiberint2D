@@ -259,32 +259,14 @@ GameObject:
   - component: {fileID: 359808169}
   - component: {fileID: 359808168}
   - component: {fileID: 359808167}
-  - component: {fileID: 359808166}
+  - component: {fileID: 359808171}
   m_Layer: 0
   m_Name: Look Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &359808166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359808165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7d9b98a6336cd4ea4b119a41fcdeb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1137581007}
-  maxDetectionRange: 5
-  maxDistanceFromPlayer: 0
-  nextWaypointDistance: 0.5
-  pathSearchCooldown: 0.5
-  speed: 400
+  m_IsActive: 1
 --- !u!114 &359808167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +373,29 @@ Transform:
   - {fileID: 903644056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359808171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359808165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fb4fa020a5ff5418e0d671e31c629a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1137581007}
+  maxDistanceFromPlayer: 1
+  searchLenght: 1000
+  spread: 5000
+  nextWaypointDistance: 0.44
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 72
+  errantCooldown: 10
+  perseguintCooldown: 0.5
+  speed: 200
 --- !u!1 &514759662
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &721442766
 Transform:
   m_ObjectHideFlags: 0
@@ -1492,7 +1497,7 @@ GameObject:
   - component: {fileID: 1137581006}
   - component: {fileID: 1137581005}
   - component: {fileID: 1137581008}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1610,7 +1615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191314322}
   - component: {fileID: 1191314323}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
