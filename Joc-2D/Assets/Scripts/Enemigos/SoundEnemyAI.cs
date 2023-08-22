@@ -2,27 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Unity.Burst.CompilerServices;
 
 public class SoundEnemyAI : MonoBehaviour
 {
     [Header("Pathfinding")]
     public Transform target;
-    public float maxDetectionRange;
-    public float maxDistanceFromPlayer;
+    public float detectionRange;
+    public float maxDistanceFromPlayer = 0.1f;
+    public float attackRange;
+    public int searchLenght;
+    public int spread;
     public float nextWaypointDistance = 0.44f;
-    public float pathSearchCooldown = 0.5f;
+    public LayerMask layerMask;
 
+    [Header("Temps d'espera")]
+    public float wanderingCooldown = 5f;
+    public float chasingCooldown = 0.5f;
+    float nextSearch = 0f;
+    public float chasingExtraTime = 10f;
+    float chasingScanTime = 0f;
+    public float attackingCooldown = 1f;
+    float nextAttack = 0f;
 
     [Header("Physics")]
     public float speed = 200f;
 
+    // Variables internes
     Path path;
     int currentWaypoint = 0;
-    float nextSearch = 0f;
+    bool firstChasingPath = false;
 
     Seeker seeker;
     Rigidbody2D rb;
 
+    // Estatus:
+    bool wandering = true;
+    bool chasing = false;
+    bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,15 +49,127 @@ public class SoundEnemyAI : MonoBehaviour
 
     }
 
-    // Update the path of the enemy
-    void UpdatePath()
+    
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
+        // Seleccionador de quin estat està l'enemic
+        if (Vector2.Distance(rb.position, target.position) <= detectionRange) //chasing l'enemic
+        {
+            chasing = true;
+            wandering = false;
+            attacking = false;
+            if (chasingScanTime < Time.time)
+                chasingScanTime += chasingExtraTime;
+        }
+        else // wandering
+        {
+            if (chasingScanTime < Time.time) // Dona temps al enemic per perseguir una mica al jugador
+            {
+                chasing = false;
+                wandering = true;
+                attacking = false; 
+            }
+        }
+        if (Vector2.Distance(rb.position, target.position) < maxDistanceFromPlayer && hit.collider.gameObject.name == "Player") // Comprobar si el jugador està a suficient distancia per attacking-lo
+        {
+            chasing = false;
+            wandering = false;
+            attacking = true;
+        }
+
+        // Selecciona quina 
+        if (attacking)
+        {
+            firstChasingPath = false;
+            if (nextAttack < Time.time)
+            {
+                Attack();
+                nextAttack += attackingCooldown;
+            }
+            Debug.Log("Atacant");
+        }
+        else
+        {
+
+            if (chasing && Vector2.Distance(rb.position, target.position) <= detectionRange)
+            {
+                if (!firstChasingPath)
+                {
+                    ChasingPath();
+                    firstChasingPath = true;
+                }
+                if (nextSearch < Time.time)
+                {
+                    ChasingPath();
+                    nextSearch = Time.time + chasingCooldown;
+                }
+            }
+            else if (wandering)
+            {
+                firstChasingPath = false;
+                if (nextSearch < Time.time)
+                {
+                    WanderingPath();
+                    nextSearch = Time.time + wanderingCooldown;
+                }
+            }
+        }
+
+        if (path == null)
+        {
+            return;
+        }
+
+        // Comproba si currentWaypoint està dintre del index de path
+        if (currentWaypoint>=0 && currentWaypoint < path.vectorPath.Count)
+        {
+            //Aplicar una fuerza
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
+            Debug.Log(hit.collider.gameObject.name);
+
+            //Condicions per que el enemic es mogui
+            if (Vector2.Distance(rb.position, target.position) >= maxDistanceFromPlayer | hit.collider.gameObject.name != "Player")
+            {
+                rb.AddForce(force);
+            }
+
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            } 
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
+
+    // Actualitza el objectiu de l'enemic
+    //      Pergesuir
+    void ChasingPath()
     {
         if (seeker.IsDone())
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete); 
         }
     }
+    //      Errar
+    void WanderingPath()
+    {
+        Debug.Log("Buscant per on errar");
+        RandomPath path = RandomPath.Construct(transform.position, searchLenght);
+        path.spread = spread;
+        seeker.StartPath(path, OnPathComplete);
+    }
 
+    // 
     void OnPathComplete(Path p)
     {
         if (!p.error)
@@ -50,29 +179,8 @@ public class SoundEnemyAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Attack()
     {
-        //Calculate Constantly new paths
-        if (nextSearch < Time.time && Vector2.Distance(rb.position, target.position) < maxDetectionRange)
-        {
-            UpdatePath();
-            nextSearch = Time.time + pathSearchCooldown;
-        }
-
-        //Aplicar una fuerza
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-        if (Vector2.Distance(rb.position, target.position) > maxDistanceFromPlayer)
-        {
-            rb.AddForce(force);
-        }
         
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
     }
 }

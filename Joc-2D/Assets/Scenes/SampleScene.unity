@@ -167,7 +167,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -393,8 +393,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 72
-  errantCooldown: 10
+  wanderingCooldown: 10
   perseguintCooldown: 0.5
+  chasingExtraTime: 10
   speed: 200
 --- !u!1 &514759662
 GameObject:
@@ -812,7 +813,7 @@ Transform:
   m_GameObject: {fileID: 721442764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 6.53, y: 0.32, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -887,10 +888,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1137581007}
-  maxDetectionRange: 5
-  maxDistanceFromPlayer: 1
+  detectionRange: 5
+  maxDistanceFromPlayer: 3
+  attackRange: 3
+  searchLenght: 1000
+  spread: 5000
   nextWaypointDistance: 0.5
-  pathSearchCooldown: 0.5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 72
+  wanderingCooldown: 3
+  followingCooldown: 0.5
+  chasingExtraTime: 10
   speed: 400
 --- !u!58 &721442771
 CircleCollider2D:
@@ -1495,8 +1504,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1137581007}
   - component: {fileID: 1137581006}
-  - component: {fileID: 1137581005}
   - component: {fileID: 1137581008}
+  - component: {fileID: 1137581005}
+  - component: {fileID: 1137581009}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1571,7 +1581,7 @@ Transform:
   m_GameObject: {fileID: 1137581004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: 0.46, y: 0.64, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1605,6 +1615,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1137581009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137581004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8f034675e5d4d49ba39411930f0cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1191314321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,8 +2368,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 17197631}
-  - {fileID: 337163343}
   - {fileID: 1137581007}
+  - {fileID: 337163343}
   - {fileID: 536783715}
   - {fileID: 721442766}
   - {fileID: 359808170}
