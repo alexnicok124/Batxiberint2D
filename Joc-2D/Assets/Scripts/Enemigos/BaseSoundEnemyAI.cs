@@ -32,6 +32,10 @@ public class BaseSoundEnemyAI : MonoBehaviour
     public Transform attackPoint;
     public float attackRange;
 
+    [Header("Health")]
+    public int maxHealth = 100;
+    int currentHealth;
+
     // Variables internes
     Path path;
     int currentWaypoint = 0;
@@ -141,7 +145,7 @@ public class BaseSoundEnemyAI : MonoBehaviour
         {
             //Aplicar una fuerza
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+            Vector2 force = speed * Time.deltaTime * direction;
 
             if (wandering || chasing)
             {
@@ -203,6 +207,38 @@ public class BaseSoundEnemyAI : MonoBehaviour
 
     void Attack()
     {
-        
+        // Animacions
+
+        // Detecció
+
+        // Atac
+
+    }
+
+
+    // Health Funtions
+    public void TakeDamage(int Damage)
+    {
+        currentHealth -= Damage;
+        Debug.Log(currentHealth);
+
+        // Posar aqui l'animació de rebre mal
+
+        // Comprobar si ha mort
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Has mort!");
+
+        // Animació de morir:
+
+        // Desactivar l'enemic
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
     }
 }

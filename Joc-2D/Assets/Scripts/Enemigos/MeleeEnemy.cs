@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class BaseLookEnemyAI : MonoBehaviour
+public class MeleeEnemy : MonoBehaviour
 {
     [Header("Pathfinding")]
     public Transform target;
@@ -76,7 +76,7 @@ public class BaseLookEnemyAI : MonoBehaviour
             {
                 chasing = false;
                 wandering = true;
-                attacking = false; 
+                attacking = false;
             }
         }
         // Comprobar si el jugador està a suficient distancia per attacking-lo
@@ -88,7 +88,7 @@ public class BaseLookEnemyAI : MonoBehaviour
         }
 
 
-        
+
         if (attacking)
         {
             firstChasingPath = false;
@@ -115,7 +115,7 @@ public class BaseLookEnemyAI : MonoBehaviour
                 {
                     ChasingPath();
                     nextSearch = Time.time + chasingCooldown;
-                } 
+                }
             }
             else if (wandering)
             {
@@ -166,9 +166,9 @@ public class BaseLookEnemyAI : MonoBehaviour
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
             if (distance < nextWaypointDistance)
-                currentWaypoint++; 
+                currentWaypoint++;
         }
-        
+
     }
 
     //Funcions
@@ -207,8 +207,15 @@ public class BaseLookEnemyAI : MonoBehaviour
         // Animacions
 
         // Detecció
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
 
         // Atac
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<Player>().TakeDamage(attackDamage);
+        }
     }
     public void TakeDamage(int Damage)
     {
@@ -220,11 +227,11 @@ public class BaseLookEnemyAI : MonoBehaviour
         // Comprobar si ha mort
         if (currentHealth <= 0)
         {
-            Die();
+            die();
         }
     }
 
-    void Die()
+    void die()
     {
         Debug.Log("Has mort!");
 

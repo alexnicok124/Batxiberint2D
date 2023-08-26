@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         // Posar aqui l'animació de rebre mal
 
         // Comprobar si ha mort
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             die();
         }

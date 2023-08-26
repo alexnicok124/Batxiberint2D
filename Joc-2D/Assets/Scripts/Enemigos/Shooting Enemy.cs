@@ -1,40 +1,44 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
-public class BaseLookEnemyAI : MonoBehaviour
+public class ShootingEnemy : MonoBehaviour
 {
-    [Header("Pathfinding")]
+    [Header("Pathfinding:")]
     public Transform target;
-    public float maxDistanceFromPlayer;
+    public float detectionRange;
+    public float stopDistance = 0.1f;
+    public float retreatDistance = 0.1f;
     public int searchLenght;
     public int spread;
     public float nextWaypointDistance = 0.44f;
     public LayerMask layerMask;
+
+    [Header("Temps d'espera:")]
     public float wanderingCooldown = 5f;
     public float chasingCooldown = 0.5f;
     float nextSearch = 0f;
     public float chasingExtraTime = 10f;
     float chasingScanTime = 0f;
 
-    [Header("Physics")]
+    [Header("Physics:")]
     public float speed = 200f;
+    public float retreatSpeed = 1f;
     public float rotationSpeed = 200f;
 
     [Header("Attack:")]
     public int attackDamage = 20;
+    public float attackRange;
     public float attackingCooldown = 1f;
     float nextAttack = 0f;
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask playerLayer;
+    public GameObject projectile;
 
     [Header("Health")]
     public int maxHealth = 100;
     int currentHealth;
 
-    // Variables internas
+    // Variables internes
     Path path;
     int currentWaypoint = 0;
     bool firstChasingPath = false;
@@ -52,16 +56,16 @@ public class BaseLookEnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
     }
+
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
-
         // Seleccionador de quin estat està l'enemic
-        if (hit.collider.name == "Player") //chasing l'enemic
+        if (Vector2.Distance(rb.position, target.position) <= detectionRange) //chasing l'enemic
         {
             chasing = true;
             wandering = false;
@@ -71,30 +75,26 @@ public class BaseLookEnemyAI : MonoBehaviour
         }
         else // wandering
         {
-
             if (chasingScanTime < Time.time) // Dona temps al enemic per perseguir una mica al jugador
             {
                 chasing = false;
                 wandering = true;
-                attacking = false; 
+                attacking = false;
             }
         }
-        // Comprobar si el jugador està a suficient distancia per attacking-lo
-        if (hit.collider.name == "Player" && Vector2.Distance(rb.position, target.position) < maxDistanceFromPlayer)
+        if (Vector2.Distance(rb.position, target.position) < stopDistance && hit.collider.gameObject.name == "Player") // Comprobar si el jugador està a suficient distancia per attacking-lo
         {
             chasing = false;
             wandering = false;
             attacking = true;
         }
 
-
-        
+        // Selecciona quina 
         if (attacking)
         {
             firstChasingPath = false;
             if (nextAttack < Time.time)
             {
-                Debug.Log(nextAttack + ", " + Time.time);
                 Attack();
                 nextAttack = attackingCooldown + Time.time;
                 Debug.Log("Atacant");
@@ -103,19 +103,18 @@ public class BaseLookEnemyAI : MonoBehaviour
         else
         {
 
-            if (chasing && hit.collider.gameObject.name == "Player")
+            if (chasing && Vector2.Distance(rb.position, target.position) <= detectionRange)
             {
                 if (!firstChasingPath)
                 {
                     ChasingPath();
                     firstChasingPath = true;
-                    nextSearch = Time.time;
                 }
                 if (nextSearch < Time.time)
                 {
                     ChasingPath();
                     nextSearch = Time.time + chasingCooldown;
-                } 
+                }
             }
             else if (wandering)
             {
@@ -128,7 +127,6 @@ public class BaseLookEnemyAI : MonoBehaviour
             }
         }
 
-        //Comproba que hi hagui un camí a sergüir
         if (path == null)
         {
             return;
@@ -147,8 +145,9 @@ public class BaseLookEnemyAI : MonoBehaviour
         // Comproba si currentWaypoint està dintre del index de path
         if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
         {
+            //Aplicar una fuerza
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = speed * Time.deltaTime * direction;
+            Vector2 force = direction * speed * Time.deltaTime;
 
             if (wandering || chasing)
             {
@@ -158,33 +157,44 @@ public class BaseLookEnemyAI : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
 
-
-            if (Vector2.Distance(rb.position, target.position) >= maxDistanceFromPlayer | hit.collider.gameObject.name != "Player")
+            //Condicions per que el enemic es mogui
+            if (Vector2.Distance(rb.position, target.position) >= stopDistance | hit.collider.gameObject.name != "Player")
             {
                 rb.AddForce(force);
             }
+            if (Vector2.Distance(rb.position, target.position) <= retreatDistance && hit.collider.gameObject.name == "Player")
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, -retreatSpeed * Time.deltaTime);
+            }
+
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
             if (distance < nextWaypointDistance)
-                currentWaypoint++; 
+            {
+                currentWaypoint++;
+            }
         }
-        
     }
-
-    //Funcions
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, maxDistanceFromPlayer);
+        Gizmos.DrawWireSphere(transform.position, stopDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, retreatDistance);
     }
 
-    // Actualitza el camí del enemic
+
+    // Actualitza el objectiu de l'enemic
+    //      Pergesuir
     void ChasingPath()
     {
-        Debug.Log("chasing");
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
     }
+    //      Errar
     void WanderingPath()
     {
         Debug.Log("Buscant per on errar");
@@ -193,9 +203,10 @@ public class BaseLookEnemyAI : MonoBehaviour
         seeker.StartPath(path, OnPathComplete);
     }
 
+    // 
     void OnPathComplete(Path p)
     {
-        if (!p.error) // Comporba que no hi ha ningun error en el camí
+        if (!p.error)
         {
             path = p;
             currentWaypoint = 0;
@@ -204,12 +215,12 @@ public class BaseLookEnemyAI : MonoBehaviour
 
     void Attack()
     {
-        // Animacions
-
-        // Detecció
-
-        // Atac
+        projectile.GetComponent<Projectile>().damage = attackDamage;
+        Instantiate(projectile, transform.position, Quaternion.identity);
     }
+
+    // Apartat de vidaç
+
     public void TakeDamage(int Damage)
     {
         currentHealth -= Damage;
@@ -220,11 +231,11 @@ public class BaseLookEnemyAI : MonoBehaviour
         // Comprobar si ha mort
         if (currentHealth <= 0)
         {
-            Die();
+            die();
         }
     }
 
-    void Die()
+    void die()
     {
         Debug.Log("Has mort!");
 
