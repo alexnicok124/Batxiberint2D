@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 52653119}
   - component: {fileID: 52653118}
   - component: {fileID: 52653117}
+  - component: {fileID: 52653125}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -176,6 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
+  RotationMouse: 0
+  Degrees: 0
   animator: {fileID: 52653122}
 --- !u!114 &52653119
 MonoBehaviour:
@@ -328,6 +331,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52653125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52653116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe2245edeb3d38478cd4de31ebedd1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIsDashing: 0
+  DashSpeed: 10
+  DashDuration: 1
+  DashCooldown: 3
+  ConsumedStamina: 30
+  Inmune: 0
+  PointingScript: {fileID: 52653118}
+  DirectionDegrees: 0
+  StaminaScript: {fileID: 52653117}
+  rbody: {fileID: 52653121}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

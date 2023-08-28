@@ -7,8 +7,8 @@ public class Pointing : MonoBehaviour
     private Vector3 MouseTarget; 
     public Camera camera; 
     //este escript es para el jugador. 
-    private float RotationMouse = 0; //angulo que tiene que rotar
-    private float Degrees; 
+    public float RotationMouse = 0; //angulo que tiene que rotar
+    public float Degrees; 
     //puedo hacer que en start, la rotacion por defecto sea 0
     
     public Animator animator; 
