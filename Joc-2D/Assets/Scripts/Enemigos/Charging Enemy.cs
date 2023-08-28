@@ -248,7 +248,7 @@ public class ChargingEnemy : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<Player>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage);
         }
     }
     public void ApplyStun(float duration)
@@ -269,11 +269,11 @@ public class ChargingEnemy : MonoBehaviour
         // Comprobar si ha mort
         if (currentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    void die()
+    void Die()
     {
         Debug.Log("Has mort!");
 

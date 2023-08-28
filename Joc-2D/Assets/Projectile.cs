@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("We hit " + other.name);
-            other.GetComponent<Player>().TakeDamage(20);
+            other.GetComponent<Health>().TakeDamage(20);
             DestroyProjectile();
         }
 

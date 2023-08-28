@@ -59,7 +59,7 @@ public class MeleeEnemy : MonoBehaviour
     void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
-
+        Debug.Log(hit.collider);
         // Seleccionador de quin estat està l'enemic
         if (hit.collider.name == "Player") //chasing l'enemic
         {
@@ -95,8 +95,8 @@ public class MeleeEnemy : MonoBehaviour
             if (nextAttack < Time.time)
             {
                 Debug.Log(nextAttack + ", " + Time.time);
-                Attack();
                 nextAttack = attackingCooldown + Time.time;
+                Attack();
                 Debug.Log("Atacant");
             }
         }
@@ -214,7 +214,7 @@ public class MeleeEnemy : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<Player>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage);
         }
     }
     public void TakeDamage(int Damage)
@@ -227,11 +227,11 @@ public class MeleeEnemy : MonoBehaviour
         // Comprobar si ha mort
         if (currentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    void die()
+    void Die()
     {
         Debug.Log("Has mort!");
 

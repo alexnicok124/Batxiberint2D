@@ -147,7 +147,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             //Aplicar una fuerza
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+            Vector2 force = speed * Time.deltaTime * direction;
 
             if (wandering || chasing)
             {
@@ -231,11 +231,11 @@ public class ShootingEnemy : MonoBehaviour
         // Comprobar si ha mort
         if (currentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    void die()
+    void Die()
     {
         Debug.Log("Has mort!");
 
