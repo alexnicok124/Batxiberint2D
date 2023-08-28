@@ -199,12 +199,12 @@ public class ChargingEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle") && attacking)
         {
             attacking = false;
             attackPointCheck = false;
             ApplyStun(stunDuration);
-        } else if (collision.gameObject.CompareTag("Player"))
+        } else if (collision.gameObject.CompareTag("Player") && attacking)
         {
             Attack();
 
