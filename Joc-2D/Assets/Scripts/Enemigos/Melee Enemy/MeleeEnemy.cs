@@ -41,6 +41,7 @@ public class MeleeEnemy : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    HealthEnemy health;
 
     // Estatus:
     bool wandering = true;
@@ -52,12 +53,16 @@ public class MeleeEnemy : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        health = GetComponent<HealthEnemy>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!health.viu)
+        {
+            Die();
+        }
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
         Debug.Log(hit.collider);
         // Seleccionador de quin estat està l'enemic
@@ -217,24 +222,9 @@ public class MeleeEnemy : MonoBehaviour
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
         }
     }
-    public void TakeDamage(int Damage)
-    {
-        currentHealth -= Damage;
-        Debug.Log(currentHealth);
-
-        // Posar aqui l'animació de rebre mal
-
-        // Comprobar si ha mort
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
 
     void Die()
     {
-        Debug.Log("Has mort!");
-
         // Animació de morir:
 
         // Desactivar l'enemic

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScriptPlayer : MonoBehaviour
 {
     public float speed = 10.0f; 
-    public int damage;
+    public int damage = 20;
     public Rigidbody2D rbody; 
     
 
@@ -17,10 +17,18 @@ public class BulletScriptPlayer : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D HitInfo){
-        Debug.Log(HitInfo.name); 
-        Destroy(gameObject); 
+        Debug.Log(HitInfo.name);
+        Destroy(gameObject);
 
-        
+        try
+        {
+            HitInfo.GetComponent<HealthEnemy>().TakeDamage(damage);
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
     }
 
     
