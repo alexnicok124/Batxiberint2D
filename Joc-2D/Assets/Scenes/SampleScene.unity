@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 52653118}
   - component: {fileID: 52653117}
   - component: {fileID: 52653126}
+  - component: {fileID: 52653127}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1149a8876a050a045b5d368c5cdc7ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 519420031}
   RotationMouse: 0
   Degrees: 0
   animator: {fileID: 52653122}
@@ -481,6 +482,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &52653127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52653116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe2245edeb3d38478cd4de31ebedd1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIsDashing: 0
+  DashSpeed: 10
+  DashDuration: 1
+  DashCooldown: 0.1
+  ConsumedStamina: 30
+  Inmune: 0
+  PointingScript: {fileID: 52653118}
+  DirectionDegrees: 0
+  StaminaScript: {fileID: 52653117}
+  rbody: {fileID: 52653121}
 --- !u!1 &337163342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1423191068
 Transform:
   m_ObjectHideFlags: 0
@@ -3283,7 +3306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2029708478
 MonoBehaviour:
   m_ObjectHideFlags: 0

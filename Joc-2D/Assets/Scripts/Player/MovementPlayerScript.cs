@@ -11,6 +11,7 @@ public class MovementPlayerScript : MonoBehaviour
     public Animator animator;
     private Vector2 direction = new Vector2(0, 0); 
     public bool PlayerCanSprint; //variable que permite sprintear
+    public Dashing DashingScript; //es para que cuando asigne la rbody = v, el rbody.moveposition no lo paralice, quiero probar con eso. 
     
     void Update() => ManageMovementInput();
 
@@ -66,6 +67,12 @@ public class MovementPlayerScript : MonoBehaviour
     }
 
     void FixedUpdate(){ 
-        rbody.MovePosition(rbody.position + movement * movespeed * Time.fixedDeltaTime); 
+        if(!DashingScript.PlayerIsDashing){  //dashing + este script son las unicas cosas cambiadas creo.
+            rbody.MovePosition(rbody.position + movement * movespeed * Time.fixedDeltaTime); 
+        } //pues sí, me ha funcionado, que alegria mi vida
+        /*
+        apuntar esto: 
+        es posible que el rbody.MovePosition cause problemas a veces.
+        */
     }   
 }

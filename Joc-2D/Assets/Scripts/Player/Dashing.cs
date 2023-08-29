@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class Dashing : MonoBehaviour
 {
-    public bool PlayerIsDashing = false; //cuando dasheemos, tenemos que asignar desde el script de movimiento que estamos haiendolo
-    //para evitar problemas, para que no sea pueda mover, 
-    //se debe de apuntar antes de dashear, l que haremos será obtener la dirección a la que dashea el personaje
-    //y luego cuando dasheemos hará una animación mientras tanto de dashear
-
-    //luego una variable de tiempo que cuando haya terminado el tiempo de dashear, PlayerIsDashing = false; 
-    //mientras tanto, = true. 
-
-    // Start is called before the first frame update
-
-
-    //reduce la stamina
+    public bool PlayerIsDashing = false; 
     public float DashSpeed = 10.0f; 
-    public float DashDuration = 1.0f; 
-    public float DashCooldown = 3.0f; 
+    public float DashDuration = 2.0f; 
+    public float DashCooldown = 0.1f; 
     public float ConsumedStamina = 30.0f; 
     public bool Inmune = false; 
+    private Vector2 Velocity; 
 
 
     public Pointing PointingScript; //para hacer: asignar referencia
     public float DirectionDegrees; 
     public Stamina StaminaScript; 
     public Rigidbody2D rbody; 
+    private float NextDashTime = 3.0f; 
 
 
 
@@ -43,18 +34,36 @@ public class Dashing : MonoBehaviour
     }
     
 
-    
+    bool OneTime = true; 
+    float Direction, EndTime; //variables útiles para este método. 
     void ManageDash(){
-        if(Input.GetMouseButton(1) && Input.GetKeyDown(KeyCode.L)){
-            float Direction = PointingScript.RotationMouse;
-            StaminaScript.ChangeStamina(-ConsumedStamina);
-            PlayerIsDashing = true;  
-            float EndTime = Time.time + DashDuration; 
-            Vector2 velocity = new Vector2(Mathf.Cos(Direction), Mathf.Sin(Direction));
-            while(Time.time <= EndTime){
-                rbody.velocity = velocity * DashSpeed;                
+        
+        if(Input.GetMouseButton(1) && Input.GetKey(KeyCode.L) && (Time.time >= NextDashTime)){
+            //Debug.Log("Checkpoint 4");
+
+            if(OneTime){ //un cop per atac sempre
+                Direction = PointingScript.RotationMouse;
+                StaminaScript.ChangeStamina(-ConsumedStamina);
+                Velocity = new Vector2(Mathf.Cos(Direction), Mathf.Sin(Direction)).normalized;
+                //Debug.Log("he llegado hasta aqui 1");  
+                EndTime = Time.time + DashDuration;
             }
-            rbody.velocity = new Vector2(0.0f, 0.0f); 
+            OneTime = false; 
+
+
+            //mentres estigui en DashDuration, permetem al player a dashear 
+            if(Time.time <= EndTime){
+                PlayerIsDashing = true;
+                //Debug.Log("Checkpoint 3"); 
+                
+            }
+            else{
+                //ya se ha terminado, paramos
+                //Debug.Log("checkpoint 2"); 
+                NextDashTime = Time.time + DashCooldown;
+                PlayerIsDashing = false; 
+                OneTime = true;
+            }
 
         }
         else{
@@ -64,41 +73,20 @@ public class Dashing : MonoBehaviour
 
     }
 
+    /*
+    En teoria todo funciona bien, aunque no sé porque si le asigno la velocidad el jugador no se mueve el pelotudo. 
+    tiene pinta de que es por el rbody.MovePosition, si moviment = 0, se mantiene igual ahí... 
+    */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //for physics
+    //les físiques
     void FixedUpdate(){
-        return; 
+        if(PlayerIsDashing){
+            //Debug.Log("velocidad asignada"); 
+            rbody.velocity = Velocity * DashSpeed;    
+            //Debug.Log(rbody.velocity); 
+        }
+        else{
+            rbody.velocity = new Vector2(0f, 0f); 
+        }
     }
 }
