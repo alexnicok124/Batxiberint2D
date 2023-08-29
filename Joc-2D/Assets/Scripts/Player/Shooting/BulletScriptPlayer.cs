@@ -20,14 +20,9 @@ public class BulletScriptPlayer : MonoBehaviour
         Debug.Log(HitInfo.name);
         Destroy(gameObject);
 
-        try
+        if (HitInfo.GetComponent<HealthEnemy>() != null)
         {
-            HitInfo.GetComponent<HealthEnemy>().TakeDamage(damage);
-        }
-        catch (System.Exception)
-        {
-
-            throw;
+            HitInfo.GetComponent<HealthEnemy>().TakeDamage(damage); 
         }
     }
 
