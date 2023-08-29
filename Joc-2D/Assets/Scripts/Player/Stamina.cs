@@ -17,6 +17,8 @@ public class Stamina : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(StaminaPoints);
+
         if(Input.GetKey(KeyCode.F) && StaminaPoints > 30.0f){ //aquí es donde puede correr, tengo que asignar CanRunning del otro script como true
             ReduceStaminaPoints(); //mientras corra no puede regenerar stamina. 
             //enable sprinting
