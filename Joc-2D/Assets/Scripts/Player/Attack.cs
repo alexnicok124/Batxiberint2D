@@ -31,7 +31,10 @@ public class Attack : MonoBehaviour
         
         foreach(Collider2D enemy in hitenemies){
             Debug.Log("we hit" + enemy.name);
-            //enemy.GetComponent<Enemy>().TakeDamage(AttackDamage); tengo que tener otro tipo de nombres. 
+            if (enemy.GetComponent<HealthEnemy>() != null)
+            {
+                enemy.GetComponent<HealthEnemy>().TakeDamage(AttackDamage);
+            }
         }
 
     }

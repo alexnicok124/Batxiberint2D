@@ -30,14 +30,11 @@ public class ChargingEnemy : MonoBehaviour
     public Transform hitPoint;
     public float hitRange = 5f;
     public LayerMask playerLayer;
+
     // Stun Variables
     bool isStunned = false;
     public float stunDuration;
     float stunEndTime = 0f;
-
-    [Header("Health")]
-    public int maxHealth = 100;
-    int currentHealth;
 
     // Variables internas
     Path path;
@@ -51,6 +48,7 @@ public class ChargingEnemy : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    HealthEnemy health;
 
     // Estatus:
     bool wandering = true;
@@ -62,12 +60,18 @@ public class ChargingEnemy : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<HealthEnemy>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!health.viu)
+        {
+            Die();
+        }
+
         if (isStunned && Time.time >= stunEndTime)
             isStunned = false;
 
@@ -257,20 +261,6 @@ public class ChargingEnemy : MonoBehaviour
         stunEndTime = Time.time + duration;
 
         // Agregar animacions + suroll
-    }
-
-    public void TakeDamage(int Damage)
-    {
-        currentHealth -= Damage;
-        Debug.Log(currentHealth);
-
-        // Posar aqui l'animació de rebre mal
-
-        // Comprobar si ha mort
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()

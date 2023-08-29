@@ -30,10 +30,6 @@ public class MeleeEnemy : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
 
-    [Header("Health")]
-    public int maxHealth = 100;
-    int currentHealth;
-
     // Variables internas
     Path path;
     int currentWaypoint = 0;

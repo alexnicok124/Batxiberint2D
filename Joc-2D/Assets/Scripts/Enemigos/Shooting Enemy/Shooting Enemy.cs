@@ -34,10 +34,6 @@ public class ShootingEnemy : MonoBehaviour
     float nextAttack = 0f;
     public GameObject projectile;
 
-    [Header("Health")]
-    public int maxHealth = 100;
-    int currentHealth;
-
     // Variables internes
     Path path;
     int currentWaypoint = 0;
@@ -45,6 +41,7 @@ public class ShootingEnemy : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
+    HealthEnemy health;
 
     // Estatus:
     bool wandering = true;
@@ -56,6 +53,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<HealthEnemy>();
     }
 
 
@@ -63,6 +61,10 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!health.viu)
+        {
+            Die();
+        }
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
         // Seleccionador de quin estat està l'enemic
         if (Vector2.Distance(rb.position, target.position) <= detectionRange) //chasing l'enemic
@@ -219,22 +221,7 @@ public class ShootingEnemy : MonoBehaviour
         Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
-    // Apartat de vidaç
-
-    public void TakeDamage(int Damage)
-    {
-        currentHealth -= Damage;
-        Debug.Log(currentHealth);
-
-        // Posar aqui l'animació de rebre mal
-
-        // Comprobar si ha mort
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
+    // Apartat de vida
     void Die()
     {
         Debug.Log("Has mort!");
