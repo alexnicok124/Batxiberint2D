@@ -29,7 +29,7 @@ public class Dashing : MonoBehaviour
     bool OneTime = true; 
     float Direction, EndTime; 
     void ManageDash(){
-        if(Input.GetMouseButton(1) && Input.GetKey(KeyCode.L) && (Time.time >= NextDashTime) && (StaminaScript.StaminaPoints >= 30.0f)){
+        if(Input.GetMouseButton(1) && Input.GetKey(KeyCode.E) && (Time.time >= NextDashTime) && (StaminaScript.StaminaPoints >= 30.0f)){
     
             if(OneTime){ 
                 Direction = PointingScript.RotationMouse;

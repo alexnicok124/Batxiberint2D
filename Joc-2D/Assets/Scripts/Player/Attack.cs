@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//para atacar a meleé. 
 
 public class Attack : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class Attack : MonoBehaviour
     public float AttackRange = 0.5f; 
     public LayerMask enemyLayers; 
     public Rigidbody2D rbody; 
+    public Transform AttackPoint; 
 
     public float cooldown = 0.5f; //cooldown
     private float nextAttackTime = 0f; //esto es un default, va variando. 
     void Update()
     {
+        
         if(Time.time >= nextAttackTime){//this if and more things implementa el cooldown
-            if(Input.GetKeyDown(KeyCode.Space)){
+            if(Input.GetMouseButton(0)){//botó esquerra del ratolí per a atacar. 
                 attack(); 
                 nextAttackTime = Time.time + cooldown; 
             }
@@ -24,16 +27,18 @@ public class Attack : MonoBehaviour
 
     void attack(){
         animator.SetTrigger("TriggerAttack"); 
-        Collider2D[] hitenemies = Physics2D.OverlapCircleAll(rbody.position, AttackRange, enemyLayers); 
+        Collider2D[] hitenemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, enemyLayers); 
         
         foreach(Collider2D enemy in hitenemies){
             Debug.Log("we hit" + enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(AttackDamage);
+            //enemy.GetComponent<Enemy>().TakeDamage(AttackDamage); tengo que tener otro tipo de nombres. 
         }
 
     }
 
     void OnDrawGizmosSelected(){
-        Gizmos.DrawWireSphere(rbody.position, AttackRange);
+        if(AttackPoint == null)
+            return; 
+        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
     }
 }
