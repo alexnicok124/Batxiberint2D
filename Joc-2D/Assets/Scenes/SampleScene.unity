@@ -319,6 +319,7 @@ MonoBehaviour:
   rbody: {fileID: 52653121}
   animator: {fileID: 52653122}
   PlayerCanSprint: 0
+  DashingScript: {fileID: 52653127}
 --- !u!50 &52653121
 Rigidbody2D:
   serializedVersion: 4
