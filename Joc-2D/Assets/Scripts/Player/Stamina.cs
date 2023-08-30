@@ -10,13 +10,17 @@ public class Stamina : MonoBehaviour
     public float ConsumingSpeed = 5.0f; 
     private Vector2 movement; 
     public MovementPlayerScript MovScript; //asignar la referencia
+    public StaminaBar Bar; 
 
     void Start(){
         StaminaPoints = MaxStaminaPoints;
+        Bar.SetMaxStamina(MaxStaminaPoints);
     }
 
     void Update()
     {
+        Bar.SetStamina(StaminaPoints);
+
 
         if(Input.GetKey(KeyCode.F) && StaminaPoints > 30.0f){ //aquí es donde puede correr, tengo que asignar CanRunning del otro script como true
             ReduceStaminaPoints(); //mientras corra no puede regenerar stamina. 
