@@ -6,17 +6,20 @@ public class Health : MonoBehaviour
 {
     public int maxHealth;
     int currentHealth;
+    public HealthBar healthBar; 
 
     private void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage (int Damage)
     {
         currentHealth -= Damage;
         Debug.Log(currentHealth);
-        // Posar animació de treure vida
+        // Posar animaciï¿½ de treure vida
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
