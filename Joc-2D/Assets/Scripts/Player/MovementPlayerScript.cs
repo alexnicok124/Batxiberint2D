@@ -74,7 +74,7 @@ public class MovementPlayerScript : MonoBehaviour
             animator.SetFloat("Vertical", movement.y);
         }
         else{
-            animator.SetTrigger("Idle"); 
+            ManageWalkingIdle();  
         }
         
     }
