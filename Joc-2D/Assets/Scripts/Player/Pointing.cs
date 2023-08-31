@@ -10,7 +10,9 @@ public class Pointing : MonoBehaviour
     public float RotationMouse = 0; //angulo que tiene que rotar
     public float Degrees; 
     //puedo hacer que en start, la rotacion por defecto sea 0
-    
+
+    public Dashing DashingScript; 
+
     public Animator animator; 
     void Update()
     {
@@ -26,7 +28,10 @@ public class Pointing : MonoBehaviour
     }
 
     void ManageMouseRotation(){
-        animator.SetTrigger("TriggerPointing"); 
+        if(!DashingScript.PlayerIsDashing){
+          animator.SetTrigger("TriggerPointing");   
+        }
+        
         MouseTarget = camera.ScreenToWorldPoint(Input.mousePosition); 
         RotationMouse = Mathf.Atan2((MouseTarget.y - transform.position.y), 
         (MouseTarget.x - transform.position.x));

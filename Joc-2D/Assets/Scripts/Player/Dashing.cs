@@ -19,10 +19,12 @@ public class Dashing : MonoBehaviour
     public Rigidbody2D rbody; 
     private float NextDashTime = 3.0f; 
 
+    public Animator animator; 
 
     void Update()
     {
         ManageDash(); 
+        animator.SetBool("IsDashing", PlayerIsDashing); 
     }
     
 

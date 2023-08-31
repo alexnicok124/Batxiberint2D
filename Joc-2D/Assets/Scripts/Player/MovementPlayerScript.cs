@@ -58,6 +58,9 @@ public class MovementPlayerScript : MonoBehaviour
          movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical"); 
          movement = movement.normalized; 
+         if(movement != Vector2.zero){
+            direction = movement; 
+         }
          
     }
 

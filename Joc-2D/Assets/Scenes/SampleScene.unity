@@ -285,6 +285,7 @@ MonoBehaviour:
   camera: {fileID: 519420031}
   RotationMouse: 0
   Degrees: 0
+  DashingScript: {fileID: 52653127}
   animator: {fileID: 52653122}
 --- !u!114 &52653119
 MonoBehaviour:
@@ -512,6 +513,7 @@ MonoBehaviour:
   DirectionDegrees: 0
   StaminaScript: {fileID: 52653117}
   rbody: {fileID: 52653121}
+  animator: {fileID: 52653122}
 --- !u!114 &52653128
 MonoBehaviour:
   m_ObjectHideFlags: 0
