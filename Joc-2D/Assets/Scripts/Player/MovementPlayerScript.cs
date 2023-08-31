@@ -46,6 +46,9 @@ public class MovementPlayerScript : MonoBehaviour
             animator.SetTrigger("Walking"); 
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
+            if(Input.GetKey(KeyCode.F) && PlayerCanSprint){
+                animator.SetTrigger("Sprinting"); 
+            }
         }
     }
 
@@ -58,11 +61,20 @@ public class MovementPlayerScript : MonoBehaviour
     }
 
     void ManageSprintMovement(){ 
-        animator.SetTrigger("Sprinting"); 
+        //animator.SetTrigger("Sprinting"); voy a probar para arreglar bug
         movespeed = default_speed * 3.0f; 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical"); 
         movement = movement.normalized; 
+        if(movement != Vector2.zero){
+            animator.SetTrigger("Sprinting");
+            direction = movement; 
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+        }
+        else{
+            animator.SetTrigger("Idle"); 
+        }
         
     }
 
