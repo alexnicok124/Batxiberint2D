@@ -34,10 +34,4 @@ public class Pointing : MonoBehaviour
         Degrees = RotationMouse * (180 / Mathf.PI ); 
         transform.rotation = Quaternion.Euler(0, 0, Degrees);
     }
-
-
-
-    
-    
-
 }

@@ -60,7 +60,6 @@ public class MeleeEnemy : MonoBehaviour
             Die();
         }
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
-        Debug.Log(hit.collider);
         // Seleccionador de quin estat està l'enemic
         if (hit.collider.name == "Player") //chasing l'enemic
         {

@@ -20,8 +20,9 @@ public class MovementPlayerScript : MonoBehaviour
         if(Input.GetMouseButton(1)){
             ManagePointingMovement(); 
         }
-        else if(Input.GetKey(KeyCode.F) && PlayerCanSprint){ //con el ratón funciona, pero en realidad el clic izquierdo es para atacar
-            ManageSprintMovement(); 
+        else if(Input.GetKey(KeyCode.LeftShift) && PlayerCanSprint){ //con el ratón funciona, pero en realidad el clic izquierdo es para atacar
+            ManageSprintMovement();
+            Debug.Log("sprinting");
         }
         else{
             ManageWalkingIdle(); 

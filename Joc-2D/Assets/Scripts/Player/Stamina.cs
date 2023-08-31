@@ -22,7 +22,7 @@ public class Stamina : MonoBehaviour
         Bar.SetStamina(StaminaPoints);
 
 
-        if(Input.GetKey(KeyCode.F) && StaminaPoints > 30.0f){ //aquí es donde puede correr, tengo que asignar CanRunning del otro script como true
+        if(Input.GetKey(KeyCode.LeftShift) && StaminaPoints > 30.0f){ //aquí es donde puede correr, tengo que asignar CanRunning del otro script como true
             ReduceStaminaPoints(); //mientras corra no puede regenerar stamina. 
             //enable sprinting
             MovScript.PlayerCanSprint = true; 
@@ -55,10 +55,6 @@ public class Stamina : MonoBehaviour
         else{
             StaminaPoints = MaxStaminaPoints; 
         }
-    }
-
-    void ShowStaminaBar(){
-        int a = 1 + 1; 
     }
 
     public void ChangeStamina(float Change){
