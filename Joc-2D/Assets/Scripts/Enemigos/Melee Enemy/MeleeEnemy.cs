@@ -22,13 +22,15 @@ public class MeleeEnemy : MonoBehaviour
     public float speed = 200f;
     public float rotationSpeed = 200f;
 
-    [Header("Attack:")]
+    [Header("Attack")]
     public int attackDamage = 20;
     public float attackingCooldown = 1f;
     float nextAttack = 0f;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
+    [Header("Others")]
+    public Animation deathAnimation;
 
     // Variables internas
     Path path;
@@ -39,6 +41,7 @@ public class MeleeEnemy : MonoBehaviour
     Rigidbody2D rb;
     HealthEnemy health;
     private Animator animator;
+    
 
     // Estatus:
     bool wandering = true;
@@ -61,118 +64,123 @@ public class MeleeEnemy : MonoBehaviour
         {
             Die();
         }
-        RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
-        // Seleccionador de quin estat està l'enemic
-        if (hit.collider.name == "Player") //chasing l'enemic
-        {
-            chasing = true;
-            wandering = false;
-            attacking = false;
-            if (chasingScanTime < Time.time)
-                chasingScanTime += chasingExtraTime;
-        }
-        else // wandering
-        {
-            if (chasingScanTime < Time.time) // Dona temps al enemic per perseguir una mica al jugador
-            {
-                chasing = false;
-                wandering = true;
-                attacking = false;
-            }
-        }
-        // Comprobar si el jugador està a suficient distancia per attacking-lo
-        if (hit.collider.name == "Player" && Vector2.Distance(rb.position, target.position) < maxDistanceFromPlayer)
-        {
-            chasing = false;
-            wandering = false;
-            attacking = true;
-        }
-
-
-
-        if (attacking)
-        {
-            firstChasingPath = false;
-            if (nextAttack < Time.time)
-            {
-                Debug.Log(nextAttack + ", " + Time.time);
-                nextAttack = attackingCooldown + Time.time;
-                Attack();
-                Debug.Log("Atacant");
-            }
-        }
         else
         {
-
-            if (chasing && hit.collider.gameObject.name == "Player")
+            
+        
+            RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
+            // Seleccionador de quin estat està l'enemic
+            if (hit.collider.name == "Player") //chasing l'enemic
             {
-                if (!firstChasingPath)
+                chasing = true;
+                wandering = false;
+                attacking = false;
+                if (chasingScanTime < Time.time)
+                    chasingScanTime += chasingExtraTime;
+            }
+            else // wandering
+            {
+                if (chasingScanTime < Time.time) // Dona temps al enemic per perseguir una mica al jugador
                 {
-                    ChasingPath();
-                    firstChasingPath = true;
-                    nextSearch = Time.time;
-                }
-                if (nextSearch < Time.time)
-                {
-                    ChasingPath();
-                    nextSearch = Time.time + chasingCooldown;
+                    chasing = false;
+                    wandering = true;
+                    attacking = false;
                 }
             }
-            else if (wandering)
+            // Comprobar si el jugador està a suficient distancia per attacking-lo
+            if (hit.collider.name == "Player" && Vector2.Distance(rb.position, target.position) < maxDistanceFromPlayer)
+            {
+                chasing = false;
+                wandering = false;
+                attacking = true;
+            }
+
+
+
+            if (attacking)
             {
                 firstChasingPath = false;
-                if (nextSearch < Time.time)
+                if (nextAttack < Time.time)
                 {
-                    WanderingPath();
-                    nextSearch = Time.time + wanderingCooldown;
+                    Debug.Log(nextAttack + ", " + Time.time);
+                    nextAttack = attackingCooldown + Time.time;
+                    Attack();
+                    Debug.Log("Atacant");
                 }
             }
-        }
-
-        //Comproba que hi hagui un camí a sergüir
-        if (path == null)
-        {
-            return;
-        }
-
-        // Cambia la rotació del enemic
-        if (attacking)
-        {
-            Vector3 lookAt = target.position - transform.position;
-            float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
-            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        }
-
-        // Comproba si currentWaypoint està dintre del index de path
-        if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
-        {
-            animator.SetBool("Moving", true);
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = speed * Time.deltaTime * direction;
-
-            if (wandering || chasing)
+            else
             {
-                Vector3 lookAt = path.vectorPath[currentWaypoint] - transform.position;
+
+                if (chasing && hit.collider.gameObject.name == "Player")
+                {
+                    if (!firstChasingPath)
+                    {
+                        ChasingPath();
+                        firstChasingPath = true;
+                        nextSearch = Time.time;
+                    }
+                    if (nextSearch < Time.time)
+                    {
+                        ChasingPath();
+                        nextSearch = Time.time + chasingCooldown;
+                    }
+                }
+                else if (wandering)
+                {
+                    firstChasingPath = false;
+                    if (nextSearch < Time.time)
+                    {
+                        WanderingPath();
+                        nextSearch = Time.time + wanderingCooldown;
+                    }
+                }
+            }
+
+            //Comproba que hi hagui un camí a sergüir
+            if (path == null)
+            {
+                return;
+            }
+
+            // Cambia la rotació del enemic
+            if (attacking)
+            {
+                Vector3 lookAt = target.position - transform.position;
                 float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
                 Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
             }
 
-
-            if (Vector2.Distance(rb.position, target.position) >= maxDistanceFromPlayer | hit.collider.gameObject.name != "Player")
+            // Comproba si currentWaypoint està dintre del index de path
+            if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
             {
-                rb.AddForce(force);
+                animator.SetBool("Moving", true);
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = speed * Time.deltaTime * direction;
+
+                if (wandering || chasing)
+                {
+                    Vector3 lookAt = path.vectorPath[currentWaypoint] - transform.position;
+                    float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
+                    Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                }
+
+
+                if (Vector2.Distance(rb.position, target.position) >= maxDistanceFromPlayer | hit.collider.gameObject.name != "Player")
+                {
+                    rb.AddForce(force);
+                }
+
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                if (distance < nextWaypointDistance)
+                    currentWaypoint++;
             }
+            else
+                animator.SetBool("Moving", false);
 
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-            if (distance < nextWaypointDistance)
-                currentWaypoint++;
         }
-        else
-            animator.SetBool("Moving", false);
-
     }
 
     //Funcions
@@ -225,7 +233,8 @@ public class MeleeEnemy : MonoBehaviour
     void Die()
     {
         // Animació de morir:
-
+        animator.SetBool("Moving", false);
+        animator.SetBool("Dead", true);
         // Desactivar l'enemic
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;

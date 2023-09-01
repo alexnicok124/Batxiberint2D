@@ -27,7 +27,7 @@ public class HealthEnemy : MonoBehaviour
 
     void Die ()
     {
-        Debug.Log("Has Mort");
+        Debug.Log("Enemic Mort");
 
         viu = false;
         this.enabled = false;

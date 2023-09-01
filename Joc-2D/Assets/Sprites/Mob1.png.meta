@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed864dc61276fc945930ac195ddec974
+guid: 7d360415ca1a2cb4181c66fbfb270c96
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 70
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mob1 (1)_0
+      name: Mob1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 150
+        x: 1
+        y: 155
         width: 70
         height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f63e6e29e28ce98459d5937edc7b3ed5
-      internalID: 348909121
+      spriteID: edf26ba18ec6fe9478e396a88a20a50a
+      internalID: 1924696373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mob1 (1)_1
+      name: Mob1_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 151
-        width: 70
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 12c8c07721df27348b0d5beff393e813
-      internalID: 1329211696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mob1 (1)_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
+        x: 73
+        y: 155
         width: 70
         height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f789d8187476a4e46b1ea62eee0ac32a
-      internalID: -378327676
+      spriteID: 1e7bde83eaeed704a9a3eb70cf112ccf
+      internalID: 1590869541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mob1 (1)_3
+      name: Mob1_2
       rect:
         serializedVersion: 2
-        x: 70
-        y: 81
+        x: 1
+        y: 83
         width: 70
-        height: 41
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c350968f8a514e540891efd3775564f0
-      internalID: -573367885
+      spriteID: 8807b569fc1ab0142951f1a8170730da
+      internalID: 202012452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mob1 (1)_4
+      name: Mob1_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
+        x: 73
+        y: 83
         width: 70
-        height: 41
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bef491f052d982c419fbb30b319522d9
-      internalID: 2106064548
+      spriteID: fa451172ada4de14a8b49954843c8110
+      internalID: -1331497109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob1_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 9
+        width: 70
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47727272}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58d393df7963494ca7cca05ca385987
+      internalID: -1254366352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob1_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 9
+        width: 70
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3178d1cdd682e74982461a62442b39e
+      internalID: -567276517
       vertices: []
       indices: 
       edges: []
@@ -225,11 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mob1 (1)_0: 348909121
-      Mob1 (1)_1: 1329211696
-      Mob1 (1)_2: -378327676
-      Mob1 (1)_3: -573367885
-      Mob1 (1)_4: 2106064548
+      Mob1_0: 1924696373
+      Mob1_1: 1590869541
+      Mob1_2: 202012452
+      Mob1_3: -1331497109
+      Mob1_4: -1254366352
+      Mob1_5: -567276517
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
