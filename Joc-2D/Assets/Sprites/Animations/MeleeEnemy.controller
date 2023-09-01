@@ -17,15 +17,15 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2263388
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.5161291
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-8613608667098136810
+--- !u!1102 &-8508418707036222676
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -85,7 +85,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1101 &4276267967623431564
+--- !u!1101 &3808638606364374667
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,19 +97,19 @@ AnimatorStateTransition:
     m_ConditionEvent: Dead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -8613608667098136810}
+  m_DstState: {fileID: -8508418707036222676}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1102 &4540574268124828876
 AnimatorState:
   serializedVersion: 6
@@ -153,11 +153,11 @@ AnimatorStateMachine:
     m_State: {fileID: 4540574268124828876}
     m_Position: {x: 30, y: 20, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -8613608667098136810}
-    m_Position: {x: 30, y: 220, z: 0}
+    m_State: {fileID: -8508418707036222676}
+    m_Position: {x: 30, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
-  - {fileID: 4276267967623431564}
+  - {fileID: 3808638606364374667}
   m_EntryTransitions:
   - {fileID: 8980367463894018857}
   m_StateMachineTransitions: {}
@@ -211,10 +211,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1

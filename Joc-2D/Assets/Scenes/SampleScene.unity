@@ -4548,13 +4548,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2029708482}
   - component: {fileID: 2029708481}
+  - component: {fileID: 2029708485}
   - component: {fileID: 2029708487}
   - component: {fileID: 2029708480}
   - component: {fileID: 2029708479}
   - component: {fileID: 2029708478}
   - component: {fileID: 2029708483}
   - component: {fileID: 2029708486}
-  - component: {fileID: 2029708485}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -4594,6 +4594,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  deathAnimation: {fileID: 0}
 --- !u!114 &2029708479
 MonoBehaviour:
   m_ObjectHideFlags: 0
