@@ -38,6 +38,7 @@ public class MeleeEnemy : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     HealthEnemy health;
+    private Animator animator;
 
     // Estatus:
     bool wandering = true;
@@ -50,6 +51,7 @@ public class MeleeEnemy : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,7 +73,6 @@ public class MeleeEnemy : MonoBehaviour
         }
         else // wandering
         {
-
             if (chasingScanTime < Time.time) // Dona temps al enemic per perseguir una mica al jugador
             {
                 chasing = false;
@@ -147,6 +148,7 @@ public class MeleeEnemy : MonoBehaviour
         // Comproba si currentWaypoint està dintre del index de path
         if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
         {
+            animator.SetBool("Moving", true);
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = speed * Time.deltaTime * direction;
 
@@ -168,6 +170,8 @@ public class MeleeEnemy : MonoBehaviour
             if (distance < nextWaypointDistance)
                 currentWaypoint++;
         }
+        else
+            animator.SetBool("Moving", false);
 
     }
 

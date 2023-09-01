@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27bb46ad2b3481c4e9b552530da7e82d
+guid: ed864dc61276fc945930ac195ddec974
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Triangle_0
+      name: Mob1 (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2816
-        width: 2560
-        height: 1728
+        y: 150
+        width: 70
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f42f1d569ef9444db36e61af5a5bd46
-      internalID: -865085269
+      spriteID: f63e6e29e28ce98459d5937edc7b3ed5
+      internalID: 348909121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle_1
+      name: Mob1 (1)_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 276
-        width: 2468
-        height: 1708
+        x: 70
+        y: 151
+        width: 70
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 213c3e6a309b37a4a92a5af13fd054f9
-      internalID: 464654064
+      spriteID: 12c8c07721df27348b0d5beff393e813
+      internalID: 1329211696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob1 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 70
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f789d8187476a4e46b1ea62eee0ac32a
+      internalID: -378327676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob1 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 81
+        width: 70
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c350968f8a514e540891efd3775564f0
+      internalID: -573367885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob1 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11
+        width: 70
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef491f052d982c419fbb30b319522d9
+      internalID: 2106064548
       vertices: []
       indices: 
       edges: []
@@ -162,8 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Triangle_0: -865085269
-      Triangle_1: 464654064
+      Mob1 (1)_0: 348909121
+      Mob1 (1)_1: 1329211696
+      Mob1 (1)_2: -378327676
+      Mob1 (1)_3: -573367885
+      Mob1 (1)_4: 2106064548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
