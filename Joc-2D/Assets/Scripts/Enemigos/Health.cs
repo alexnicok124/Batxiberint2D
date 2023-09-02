@@ -7,10 +7,12 @@ public class HealthEnemy : MonoBehaviour
     public int maxHealth;
     int currentHealth;
     public bool viu = true;
+    Animator animator;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage (int Damage)
@@ -18,6 +20,7 @@ public class HealthEnemy : MonoBehaviour
         currentHealth -= Damage;
         Debug.Log(currentHealth);
         // Posar animació de treure vida
+        animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
