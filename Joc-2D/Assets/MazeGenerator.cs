@@ -296,6 +296,7 @@ public class MazeGenerator : MonoBehaviour {
         // Determine size of cell using localScale.
         cellSize = cellPrefab.transform.localScale.x;
 
+
         // Create an empty parent object to hold the maze in the scene.
         mazeParent = new GameObject();
         mazeParent.transform.position = Vector2.zero;
