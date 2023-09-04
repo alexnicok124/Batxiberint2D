@@ -1,0 +1,543 @@
+fileFormatVersion: 2
+guid: 2a4dc6f8ed1e41f4ab0cbd3ca98649ec
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mob2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdb2b3d52fa3594794d5bf38bf0dda7
+      internalID: -1682140024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25abe444d8385346ba1331519125cb0
+      internalID: -965522771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5394a57becab6234e9ab1228f0536aeb
+      internalID: 837828742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f775b334c0fc3a42970bd2debcffbee
+      internalID: -1974766882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10cc74a163b753b4fba8935bd5b6d6e3
+      internalID: -981676259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5781b967f1e43547b5adf70a0ab8df7
+      internalID: -841591815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a41fd3bddaf6b4db39f49f4d21d50b
+      internalID: 1498283180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob2_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -17}
+        - {x: 22, y: -11}
+        - {x: 22, y: -5}
+        - {x: 25, y: 0}
+        - {x: 25, y: 2}
+        - {x: 22, y: 7}
+        - {x: 22, y: 13}
+        - {x: 11, y: 24}
+        - {x: 5, y: 24}
+        - {x: 0, y: 27}
+        - {x: -2, y: 27}
+        - {x: -7, y: 24}
+        - {x: -13, y: 24}
+        - {x: -17, y: 20}
+        - {x: -17, y: 19}
+        - {x: -24, y: 13}
+        - {x: -24, y: 7}
+        - {x: -27, y: 2}
+        - {x: -27, y: 0}
+        - {x: -24, y: -5}
+        - {x: -24, y: -11}
+        - {x: -20, y: -15}
+        - {x: -19, y: -15}
+        - {x: -13, y: -22}
+        - {x: -7, y: -22}
+        - {x: -2, y: -25}
+        - {x: 0, y: -25}
+        - {x: 5, y: -22}
+        - {x: 11, y: -22}
+        - {x: 15, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651aa4667fd107f4b98583b1b5e3ec03
+      internalID: 423782253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Mob2_0: -1682140024
+      Mob2_1: -965522771
+      Mob2_2: 837828742
+      Mob2_3: -1974766882
+      Mob2_4: -981676259
+      Mob2_5: -841591815
+      Mob2_6: 1498283180
+      Mob2_7: 423782253
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
