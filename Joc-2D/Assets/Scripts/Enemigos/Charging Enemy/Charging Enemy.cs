@@ -49,6 +49,7 @@ public class ChargingEnemy : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     HealthEnemy health;
+    Animator animator;
 
     // Estatus:
     bool wandering = true;
@@ -61,6 +62,7 @@ public class ChargingEnemy : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -73,7 +75,10 @@ public class ChargingEnemy : MonoBehaviour
         }
 
         if (isStunned && Time.time >= stunEndTime)
+        {
             isStunned = false;
+            animator.SetBool("Stunned", false);
+        }
 
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
 
@@ -139,6 +144,7 @@ public class ChargingEnemy : MonoBehaviour
         if (isStunned)
         {
             rb.velocity = Vector2.zero; //Deixa paralitzat al enemic
+            animator.SetBool("Stunned", true);
         }
 
         // Comproba si currentWaypoint està dintre del index de path
@@ -182,6 +188,7 @@ public class ChargingEnemy : MonoBehaviour
 
                 if (Vector2.Distance(rb.position, target.position) >= attackRange || hit.collider.gameObject.name != "Player")
                 {
+                    animator.SetBool("Moving", true);
                     rb.AddForce(force);
                 }
 
@@ -244,8 +251,6 @@ public class ChargingEnemy : MonoBehaviour
 
     void Attack()
     {
-        // Animacions
-
         // Detecció
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hitPoint.position, hitRange, playerLayer);
         // Atac
@@ -261,6 +266,7 @@ public class ChargingEnemy : MonoBehaviour
         stunEndTime = Time.time + duration;
 
         // Agregar animacions + suroll
+        
     }
 
     void Die()
@@ -268,6 +274,7 @@ public class ChargingEnemy : MonoBehaviour
         Debug.Log("Has mort!");
 
         // Animació de morir:
+        animator.SetBool("Death", true);
 
         // Desactivar l'enemic
         GetComponent<Collider2D>().enabled = false;

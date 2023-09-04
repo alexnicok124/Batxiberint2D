@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: fba53d854985e7e4dbf316b299e67c09
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 52
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Mob3 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 169
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a2d923d029d8d4ab1defc93175b208
+      internalID: 1897661055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 168
+        width: 44
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af981396b9b08f479a05891908dae3d
+      internalID: 971851380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 168
+        width: 44
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3cf6d7eaab5db4da0cd79c229f227f
+      internalID: -468147704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 169
+        width: 44
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86c97e1a2c9b464d93a2a580a7a99a7
+      internalID: -477162265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 117
+        width: 44
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a082edf4afe6449a2903877d990b65
+      internalID: 878531956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 117
+        width: 44
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea9c3a02828aa94b9f2ff0a2fc8fb43
+      internalID: 1382112374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 110
+        width: 36
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43478262}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abda3c84886f3c4fb15527f64246a27
+      internalID: -1436270656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 109
+        width: 34
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4468085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56da1334880bb4d40bd622f7c3c6c9aa
+      internalID: -1055752611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 65
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f558ae5749dd684ea25db1f7fceaddc
+      internalID: -1245060035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 65
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417b8631cf4859a4587b4efd3de05703
+      internalID: 303748906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 65
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f792b5dbcae1ce4bb09bd9a515bbc69
+      internalID: -1047212245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 65
+        width: 46
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dd9ced0aa5ec54b90e4779f6a64fe5
+      internalID: -1609382694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 10
+        width: 44
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3809524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3603d17b9411cd3498957c46fb2934a6
+      internalID: 927888332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mob3 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 5
+        width: 49
+        height: 47
+      alignment: 9
+      pivot: {x: 0.48979592, y: 0.4468085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518a0803980a2cb42b9c714feef3efb9
+      internalID: 753759724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Mob3 (1)_0: 1897661055
+      Mob3 (1)_1: 971851380
+      Mob3 (1)_10: -1047212245
+      Mob3 (1)_11: -1609382694
+      Mob3 (1)_12: 927888332
+      Mob3 (1)_13: 753759724
+      Mob3 (1)_2: -468147704
+      Mob3 (1)_3: -477162265
+      Mob3 (1)_4: 878531956
+      Mob3 (1)_5: 1382112374
+      Mob3 (1)_6: -1436270656
+      Mob3 (1)_7: -1055752611
+      Mob3 (1)_8: -1245060035
+      Mob3 (1)_9: 303748906
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

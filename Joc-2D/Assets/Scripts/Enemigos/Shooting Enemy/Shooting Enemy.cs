@@ -21,6 +21,8 @@ public class ShootingEnemy : MonoBehaviour
     float nextSearch = 0f;
     public float chasingExtraTime = 10f;
     float chasingScanTime = 0f;
+    public float maxBlinkTime = 0f;
+    float nextBlink = 0f;
 
     [Header("Physics:")]
     public float speed = 200f;
@@ -42,6 +44,7 @@ public class ShootingEnemy : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     HealthEnemy health;
+    Animator animator;
 
     // Estatus:
     bool wandering = true;
@@ -54,6 +57,7 @@ public class ShootingEnemy : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -84,7 +88,7 @@ public class ShootingEnemy : MonoBehaviour
                 attacking = false;
             }
         }
-        if (Vector2.Distance(rb.position, target.position) < stopDistance && hit.collider.gameObject.name == "Player") // Comprobar si el jugador està a suficient distancia per attacking-lo
+        if (Vector2.Distance(rb.position, target.position) < attackRange && hit.collider.gameObject.name == "Player") // Comprobar si el jugador està a suficient distancia per attacking-lo
         {
             chasing = false;
             wandering = false;
@@ -97,7 +101,7 @@ public class ShootingEnemy : MonoBehaviour
             firstChasingPath = false;
             if (nextAttack < Time.time)
             {
-                Attack();
+                StartCoroutine(Attack());
                 nextAttack = attackingCooldown + Time.time;
                 Debug.Log("Atacant");
             }
@@ -176,12 +180,18 @@ public class ShootingEnemy : MonoBehaviour
                 currentWaypoint++;
             }
         }
+        // Blinking Animation
+        if (nextBlink < Time.time)
+        {
+            animator.SetTrigger("Blink");
+            nextBlink = Time.time + Random.Range(3f, maxBlinkTime);
+        }
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, stopDistance);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, retreatDistance);
     }
@@ -215,8 +225,11 @@ public class ShootingEnemy : MonoBehaviour
         }
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
+        animator.SetTrigger("Blink");
+        nextBlink = Time.time + Random.Range(3f, maxBlinkTime);
+        yield return new WaitForSeconds(0.1f);
         projectile.GetComponent<Projectile>().damage = attackDamage;
         Instantiate(projectile, transform.position, Quaternion.identity);
     }
@@ -227,7 +240,7 @@ public class ShootingEnemy : MonoBehaviour
         Debug.Log("Has mort!");
 
         // Animació de morir:
-
+        animator.SetBool("Death", true);
         // Desactivar l'enemic
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
