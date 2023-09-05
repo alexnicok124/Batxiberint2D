@@ -21,15 +21,19 @@ public class ChargingEnemy : MonoBehaviour
     public float speed = 200f;
     public float rotationSpeed = 200f;
     public float chargingSpeed = 400f;
+    public LayerMask deathIgnoreLayers;
 
     [Header("Attack:")]
     public int attackDamage = 20;
-    public float attackingCooldown = 1f;
-    float nextAttack = 0f;
     public float attackRange;
+    public float attackCooldown;
+    float nextAttack;
     public Transform hitPoint;
     public float hitRange = 5f;
     public LayerMask playerLayer;
+    public float ChargingDuration;
+    public float chargeCooldown = 1f;
+    float nextCharge = 0f;
 
     // Stun Variables
     bool isStunned = false;
@@ -40,7 +44,7 @@ public class ChargingEnemy : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool firstChasingPath = false;
-    bool attackPointCheck = false;
+    bool chargePointCheck = false;
     Vector2 direction;
     Vector2 force;
     Vector2 attackDirection;
@@ -69,10 +73,7 @@ public class ChargingEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!health.viu)
-        {
-            Die();
-        }
+        
 
         if (isStunned && Time.time >= stunEndTime)
         {
@@ -84,7 +85,7 @@ public class ChargingEnemy : MonoBehaviour
 
         // Seleccionador de quin estat està l'enemic
         // Comprobar si el jugador està a suficient distancia per attacking-lo
-        if (hit.collider.name == "Player" && Vector2.Distance(rb.position, target.position) < attackRange)
+        if (hit.collider.name == "Player" && Vector2.Distance(rb.position, target.position) < attackRange && nextAttack < Time.time)
         {
             chasing = false;
             wandering = false;
@@ -148,27 +149,11 @@ public class ChargingEnemy : MonoBehaviour
         }
 
         // Comproba si currentWaypoint està dintre del index de path
-        else if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
+        if (currentWaypoint >= 0 && currentWaypoint < path.vectorPath.Count)
         {
             if (attacking)
             {
-                firstChasingPath = false;
-                if (!attackPointCheck && nextAttack < Time.time)
-                {
-                    attackDirection = ((Vector2)target.position - rb.position).normalized;
-                    attackPointCheck = true;
-                    Debug.Log("Atacant, " + nextAttack + ", " + Time.time);
-                    nextAttack = attackingCooldown + Time.time;
-                }
-                Vector3 lookAt = attackDirection;
-                float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
-                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-                direction = attackDirection;
-                force = chargingSpeed * Time.deltaTime * direction;
-                Debug.Log(direction + ", " + force);
-                rb.AddForce(force);
+                StartCoroutine(Charge());
             }
             else
             {
@@ -190,14 +175,18 @@ public class ChargingEnemy : MonoBehaviour
                 {
                     animator.SetBool("Moving", true);
                     rb.AddForce(force);
-                }
+                } 
 
                 float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
                 if (distance < nextWaypointDistance)
                     currentWaypoint++;
-            }
-        }
 
+            }
+        } else
+            animator.SetBool("Moving", false);
+
+        if (!health.viu)
+            Die();
     }
 
     //Funcions
@@ -207,34 +196,60 @@ public class ChargingEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+    IEnumerator Charge()
+    {
+        firstChasingPath = false;
+        if (!chargePointCheck && nextCharge < Time.time)
+        {
+            attackDirection = ((Vector2)target.position - rb.position).normalized;
+            chargePointCheck = true;
+            nextCharge = chargeCooldown + Time.time;
+            animator.SetBool("Moving", false);
+            animator.SetBool("ChargingCharge", true);
+        }
+        Vector3 lookAt = attackDirection;
+        float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        direction = attackDirection;
+        force = chargingSpeed * Time.deltaTime * direction;
+        yield return new WaitForSeconds(3f);
+        animator.SetBool("Charging", true);
+        animator.SetBool("ChargingCharge", false);
+        rb.AddForce(force);
+            
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") && attacking)
+        if (collision.gameObject.CompareTag("Obstacle") && animator.GetBool("Charging"))
         {
             attacking = false;
-            attackPointCheck = false;
+            chargePointCheck = false;
+            rb.velocity = Vector2.zero;
+            animator.SetBool("Charging", false);
             ApplyStun(stunDuration);
-        } else if (collision.gameObject.CompareTag("Player") && attacking)
+            nextAttack = attackCooldown + Time.time;
+        } else if (collision.gameObject.CompareTag("Player") && animator.GetBool("Charging"))
         {
             Attack();
-
             attacking = false;
-            attackPointCheck = false;
+            chargePointCheck = false;
+            rb.velocity = Vector2.zero;
+            animator.SetBool("Charging", false);
             ApplyStun(stunDuration);
+            nextAttack = attackCooldown + Time.time;
         }
-        Debug.Log("Colliding with " + collision.gameObject.name);
     }
 
     // Actualitza el camí del enemic
     void ChasingPath()
     {
-        Debug.Log("chasing");
         seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
     void WanderingPath()
     {
-        Debug.Log("Buscant per on errar");
         RandomPath path = RandomPath.Construct(transform.position, searchLenght);
         path.spread = spread;
         seeker.StartPath(path, OnPathComplete);
@@ -271,13 +286,11 @@ public class ChargingEnemy : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Has mort!");
-
         // Animació de morir:
+        animator.SetBool("Moving", false);
         animator.SetBool("Death", true);
-
         // Desactivar l'enemic
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().excludeLayers = deathIgnoreLayers;
         this.enabled = false;
     }
 }

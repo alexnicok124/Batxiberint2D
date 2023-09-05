@@ -8,11 +8,13 @@ public class HealthEnemy : MonoBehaviour
     int currentHealth;
     public bool viu = true;
     Animator animator;
+    new Rigidbody2D rigidbody;
 
     private void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage (int Damage)
@@ -31,7 +33,7 @@ public class HealthEnemy : MonoBehaviour
     void Die ()
     {
         Debug.Log("Enemic Mort");
-
+        rigidbody.velocity = Vector3.zero;
         viu = false;
         this.enabled = false;
     }

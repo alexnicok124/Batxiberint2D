@@ -725,7 +725,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.264108
+  orthographic size: 4.935193
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -773,6 +773,7 @@ GameObject:
   - component: {fileID: 653863219}
   - component: {fileID: 653863223}
   - component: {fileID: 653863224}
+  - component: {fileID: 653863228}
   m_Layer: 0
   m_Name: Charging Enemy
   m_TagString: Untagged
@@ -867,7 +868,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.5, y: 0.5, z: 1}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1116077548}
@@ -898,14 +899,19 @@ MonoBehaviour:
   speed: 200
   rotationSpeed: 200
   chargingSpeed: 800
+  deathIgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 8
   attackDamage: 20
-  attackingCooldown: 3
   attackRange: 5
+  attackCooldown: 0
   hitPoint: {fileID: 1116077548}
   hitRange: 0.7
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  ChargingDuration: 1
+  chargeCooldown: 1
   stunDuration: 3
 --- !u!114 &653863224
 MonoBehaviour:
@@ -919,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1366d3d7c7635d439ee612b666ace7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 1
   viu: 1
 --- !u!212 &653863225
 SpriteRenderer:
@@ -1039,6 +1045,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66130936, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &653863228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653863217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b45a56592e2b9479d939537da1fb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670276865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1565,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -1756,7 +1774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1274298973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2368,7 +2386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1999549114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,7 +2657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2029708478
 MonoBehaviour:
   m_ObjectHideFlags: 0
