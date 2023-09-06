@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShootingEnemy : MonoBehaviour
 {
     [Header("Pathfinding:")]
-    public Transform target;
+    private Transform target;
     public float detectionRange;
     public float stopDistance = 0.1f;
     public float retreatDistance = 0.1f;
@@ -58,6 +58,8 @@ public class ShootingEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
         animator = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
 
@@ -103,7 +105,6 @@ public class ShootingEnemy : MonoBehaviour
             {
                 StartCoroutine(Attack());
                 nextAttack = attackingCooldown + Time.time;
-                Debug.Log("Atacant");
             }
         }
         else
@@ -209,7 +210,6 @@ public class ShootingEnemy : MonoBehaviour
     //      Errar
     void WanderingPath()
     {
-        Debug.Log("Buscant per on errar");
         RandomPath path = RandomPath.Construct(transform.position, searchLenght);
         path.spread = spread;
         seeker.StartPath(path, OnPathComplete);
@@ -237,7 +237,6 @@ public class ShootingEnemy : MonoBehaviour
     // Apartat de vida
     void Die()
     {
-        Debug.Log("Has mort!");
 
         // Animació de morir:
         animator.SetBool("Death", true);

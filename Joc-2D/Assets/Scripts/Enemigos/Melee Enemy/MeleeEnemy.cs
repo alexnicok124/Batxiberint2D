@@ -6,7 +6,7 @@ using Pathfinding;
 public class MeleeEnemy : MonoBehaviour
 {
     [Header("Pathfinding")]
-    public Transform target;
+    private Transform target;
     public float maxDistanceFromPlayer;
     public int searchLenght;
     public int spread;
@@ -55,6 +55,7 @@ public class MeleeEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
         animator = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -102,10 +103,8 @@ public class MeleeEnemy : MonoBehaviour
                 firstChasingPath = false;
                 if (nextAttack < Time.time)
                 {
-                    Debug.Log(nextAttack + ", " + Time.time);
                     nextAttack = attackingCooldown + Time.time;
                     Attack();
-                    Debug.Log("Atacant");
                 }
             }
             else
@@ -194,12 +193,10 @@ public class MeleeEnemy : MonoBehaviour
     // Actualitza el camí del enemic
     void ChasingPath()
     {
-        Debug.Log("chasing");
         seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
     void WanderingPath()
     {
-        Debug.Log("Buscant per on errar");
         RandomPath path = RandomPath.Construct(transform.position, searchLenght);
         path.spread = spread;
         seeker.StartPath(path, OnPathComplete);
@@ -225,7 +222,6 @@ public class MeleeEnemy : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
         }
     }

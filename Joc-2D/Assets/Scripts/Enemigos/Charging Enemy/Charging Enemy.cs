@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChargingEnemy : MonoBehaviour
 {
     [Header("Pathfinding")]
-    public Transform target;
+    Transform target;
     public int searchLenght;
     public int spread;
     public float nextWaypointDistance = 0.44f;
@@ -67,7 +67,7 @@ public class ChargingEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<HealthEnemy>();
         animator = GetComponent<Animator>();
-
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -271,7 +271,6 @@ public class ChargingEnemy : MonoBehaviour
         // Atac
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
         }
     }
