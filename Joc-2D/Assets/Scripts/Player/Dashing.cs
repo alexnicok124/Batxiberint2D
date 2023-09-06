@@ -9,7 +9,9 @@ public class Dashing : MonoBehaviour
     public float DashDuration = 2.0f; 
     public float DashCooldown = 4.0f; 
     public float ConsumedStamina = 30.0f; 
-    public bool Inmune = false; 
+    public bool Inmune = false;
+    public LayerMask EnemyLayers;
+    private LayerMask EmptyLayer;
     private Vector2 Velocity; 
 
 
@@ -25,6 +27,10 @@ public class Dashing : MonoBehaviour
     {
         ManageDash(); 
         animator.SetBool("IsDashing", PlayerIsDashing); 
+        if(PlayerIsDashing)
+            GetComponent<Collider2D>().excludeLayers = EnemyLayers;
+        else if (!PlayerIsDashing)
+            GetComponent<Collider2D>().excludeLayers = EmptyLayer;
     }
     
 

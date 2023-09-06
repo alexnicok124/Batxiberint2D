@@ -289,6 +289,7 @@ public class ChargingEnemy : MonoBehaviour
         // Animació de morir:
         animator.SetBool("Moving", false);
         animator.SetBool("Death", true);
+
         // Desactivar l'enemic
         GetComponent<Collider2D>().excludeLayers = deathIgnoreLayers;
         this.enabled = false;

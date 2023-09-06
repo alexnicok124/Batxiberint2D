@@ -167,6 +167,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Stunned
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Death
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 240070348783931813}
   m_Solo: 0
@@ -328,10 +331,10 @@ AnimatorStateMachine:
     m_Position: {x: -210, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
-  - {fileID: 7878962098928152790}
-  - {fileID: 2773865015359695284}
-  - {fileID: -785289539658008903}
   - {fileID: -7128973634436873835}
+  - {fileID: 2773865015359695284}
+  - {fileID: 7878962098928152790}
+  - {fileID: -785289539658008903}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -410,6 +413,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: ChargingCharge
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Death
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 546773156030768698}
@@ -541,6 +547,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Stunned
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Death
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 240070348783931813}
   m_Solo: 0
@@ -618,6 +627,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Stunned
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Death
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2227295562572796329}

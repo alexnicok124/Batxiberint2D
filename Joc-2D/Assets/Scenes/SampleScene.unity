@@ -203,7 +203,7 @@ MonoBehaviour:
   AttackRange: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   rbody: {fileID: 52653121}
   AttackPoint: {fileID: 1282462846}
   cooldown: 0.5
@@ -408,6 +408,9 @@ MonoBehaviour:
   DashCooldown: 0.1
   ConsumedStamina: 30
   Inmune: 0
+  EnemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
   PointingScript: {fileID: 52653118}
   DirectionDegrees: 0
   StaminaScript: {fileID: 52653117}
@@ -725,7 +728,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.935193
+  orthographic size: 10.2683
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -774,7 +777,7 @@ GameObject:
   - component: {fileID: 653863223}
   - component: {fileID: 653863224}
   - component: {fileID: 653863228}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Charging Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIeyIfMeMogIAAKIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVNtu2kAQ/RW0z6UCyiX0rQVCWikJCq3yUPIweMd4xXrX2kuARPx7Z9cGO24lS16fuZ6zM35nQtkCE6fN0gh+rzmyrx0WzuxTpzbe4RF2Wq3FG158ngV3WXCC6PMETmjC+yHM6hydEck3tZPBuUegVyLVJl/wHc60dZbgFKRFMhntQrQi6L3DjvTqTkPIiU6DSTi90Wna65zpmKByaGrXfuV4ceuOoptXiYS8QB56rr0H17xlNkVsKo/e58Eo5NdSClt1w9ypiGxnUFhPXMiBCyB2sYUhfWYodpkLGZvBj2lq0VVtGTjNhSGRyqzsuy6Vy8Huy9ZeQfpQZzyMXZU57/8xd/vRnBqd313K9nuhhMtEsn+CUwLWNZRtwvO6734U6AByD1uJzxmqB7002itORmd8CPUWB/P688pslmGyr/Gy1Rboi1rxXvt+iMM5kj/OpMi3UflhCayljnLH20dDd/ODGo6zYasUhIYuflv8BbvmEFWGW2GsI1PFUoX2ttqb4MoWUbPAxruZNgojXDVdoALpTitK49o32LI1yrYstxDWpSpe2S5b0AqJcO3f67VMK32oL8viT58XKy2UWyOYJGvks5k+3KPNHr2TQmHNKBgeSMSZVqqcPvufsLU3KSSNMIdH5w3OwUHcAeqJpoQ3Q0nQGKG8lGEgI4uQ/A+xCM9LEDkDqisjzB60itvz4f0SBmHnBf845oxPtjfjKUwnCDeYTobdER+Mb4Zf+lvgCOl4yuIeCEWag1yVolVXRROkai6KZv7yR+ssDRRx8biBw1K85bqph1CpXicGUT2WKa5s0VAV+knwBRfEc43OCRWHj71vmNTJHvnmWnMTlV0cnYFNnWXDCvGqXUA2bBb/YRsW4OtirQy+CjyE4pdkZ3b+C1BLAwQUAAAICAAACCHscvbIE20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IztNBRUEovSizIKAaKGII4pZkpIHa0Uop5koWZZaKleWqiRWqauYmuaYqRmYWJsWFSYkpqYpqZpVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsiHzHjKICAACiBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHscvbIE20AAAB4AAAACQAkAAAAAAAAAAAAAADvAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAKcDAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIezTyaHdowIAAKEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVNtu2kAQ/RW0z6UCyiX0rQVCWikJCq3yUPIweMd4xXrX2kuARPx7Z9cGO24lS17P5cycszN+Z0LZAhOnzdIIfq85sq8dFs7sU6d23uERdlqtxRteYp4Fd1kIghjzBE5osvdDmtU5OiOSb2onQ3CPjF6JVJt8wXc409ZZMqcgLZLLaBeyFZneO+xIr+40pJzoNJiE0xudpr3OmY4JKoemDu1XgZew7iiGeZVIyAvkoec6enDFLdEUsakiep8Ho4CvpRS26oa5UxHZzqCwnrhQABdA7GILQ/rMUOwyFxCbyY9patFVbRk4zYUhkUpU9l2XyuVg92VrryB9qDMexq5KzPt/3N1+dKdG53eXsv1eKOEykeyf4JSAdQ1lm+Z53Xc/CnQAuYetxOcM1YNeGu0VJ6czPqR6i4N5/XllNssw2df2stWW0Re14r32/RCHcyR/nEmRb6Pyw9KwljrKHW8fDd3ND2o4zoatIMgauvht8RfsmkNUOW6FsY5cFUsV2ttqb0IoW0TNAhvvZtoojOaq6QIVSHdaEYxr32DL1yjb8txCWJeqeOW7bEErJZrr+F6v5VrpQ31ZFn/6vFhpodwawSRZA89m+nCPNnv0TgqFNaPgeCARZ1qpcvrsf9LW3qSQNNIcHp03OAcHcQeoJ5oS3kwlQWOG8lKGgYwsAvgfYhGelyByBlRXRjN70Cpuz4f3SxiEnRf845gzPtnejKcwnSDcYDoZdkd8ML4ZfulvgSOk4ymLeyAUaQ5yVYpWXRVNkKq5KJr5yx+tszRQxMXjBg5L8ZbrxvULlep1YhDVY4lwJYuGitA/gi+4IJprdE6oOHvsfcOkTvbIN1egTRR2cXQGNjXKhhXiVbtg2bBZ/IVtWDBf92pl8FXgIRS/gJ3Z+S9QSwMEFAAACAgAAAgh7HL2yBNtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSM7TQUVBKL0osyCgGihiCOKWZKSB2tFKKeZKFmWWipXlqokVqmrmJrmmKkZmFibFhUmJKamKamaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7NPJod2jAgAAoQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7HL2yBNtAAAAeAAAAAkAJAAAAAAAAAAAAAAA8AIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACoAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -1774,7 +1777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1274298973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2383,7 @@ GameObject:
   - component: {fileID: 1999549121}
   - component: {fileID: 1999549123}
   - component: {fileID: 1999549122}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shooting Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2651,7 +2654,7 @@ GameObject:
   - component: {fileID: 2029708478}
   - component: {fileID: 2029708483}
   - component: {fileID: 2029708486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
