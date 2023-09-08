@@ -10,7 +10,7 @@ public class HealthEnemy : MonoBehaviour
     public LayerMask deadEnemyLayer;
     Animator animator;
     new Rigidbody2D rigidbody;
-    Transform transform;
+    new Transform transform;
     EnemySpawner EnemySpawner;
 
     private void Start()

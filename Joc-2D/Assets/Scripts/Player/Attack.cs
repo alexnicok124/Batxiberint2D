@@ -25,8 +25,10 @@ public class Attack : MonoBehaviour
         }
     }
 
+#pragma warning disable IDE1006 // Estilos de nombres
     void attack(){
-        animator.SetTrigger("TriggerAttack"); 
+        AttackPoint.GetComponent<Animator>().SetTrigger("Attack");
+        Debug.Log("Attacked");
         Collider2D[] hitenemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, enemyLayers); 
         
         foreach(Collider2D enemy in hitenemies){
@@ -38,6 +40,7 @@ public class Attack : MonoBehaviour
         }
 
     }
+#pragma warning restore IDE1006 // Estilos de nombres
 
     void OnDrawGizmosSelected(){
         if(AttackPoint == null)
