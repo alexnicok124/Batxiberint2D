@@ -25,6 +25,7 @@ public class Shooting : MonoBehaviour
 
 
     void Shoot(){
-        Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation); //mirar si la rotación está bien, como sea. 
+        FirePoint.GetComponent<Animator>().SetTrigger("Shoot");
+        Instantiate(BulletPrefab, FirePoint.position, transform.rotation); //mirar si la rotación está bien, como sea. 
     }
 }

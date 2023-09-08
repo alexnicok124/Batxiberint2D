@@ -45,6 +45,8 @@ public class ChargingEnemy : MonoBehaviour
     int currentWaypoint = 0;
     bool firstChasingPath = false;
     bool chargePointCheck = false;
+    bool isCharging = false;
+    bool canCharge = false;
     Vector2 direction;
     Vector2 force;
     Vector2 attackDirection;
@@ -146,6 +148,7 @@ public class ChargingEnemy : MonoBehaviour
         {
             rb.velocity = Vector2.zero; //Deixa paralitzat al enemic
             animator.SetBool("Stunned", true);
+            return;
         }
 
         // Comproba si currentWaypoint està dintre del index de path
@@ -153,7 +156,23 @@ public class ChargingEnemy : MonoBehaviour
         {
             if (attacking)
             {
-                StartCoroutine(Charge());
+                if (!isCharging)
+                {
+                    isCharging = true;
+                    StartCoroutine(Charge()); 
+                }
+                Vector3 lookAt = attackDirection;
+                float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
+                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                if (canCharge)
+                {
+                    
+
+                    direction = attackDirection;
+                    force = chargingSpeed * Time.deltaTime * direction;
+                    rb.AddForce(force); 
+                }
             }
             else
             {
@@ -198,6 +217,7 @@ public class ChargingEnemy : MonoBehaviour
     }
     IEnumerator Charge()
     {
+        canCharge = false;
         firstChasingPath = false;
         if (!chargePointCheck && nextCharge < Time.time)
         {
@@ -207,40 +227,39 @@ public class ChargingEnemy : MonoBehaviour
             animator.SetBool("Moving", false);
             animator.SetBool("ChargingCharge", true);
         }
-        Vector3 lookAt = attackDirection;
-        float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
-        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        direction = attackDirection;
-        force = chargingSpeed * Time.deltaTime * direction;
+        
         yield return new WaitForSeconds(3f);
+        canCharge = true;
         animator.SetBool("Charging", true);
         animator.SetBool("ChargingCharge", false);
-        rb.AddForce(force);
             
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") && animator.GetBool("Charging"))
-        {
-            attacking = false;
-            chargePointCheck = false;
-            rb.velocity = Vector2.zero;
-            animator.SetBool("Charging", false);
-            ApplyStun(stunDuration);
-            nextAttack = attackCooldown + Time.time;
-        } else if (collision.gameObject.CompareTag("Player") && animator.GetBool("Charging"))
+        
+        if (collision.gameObject.CompareTag("Player") && animator.GetBool("Charging"))
         {
             Attack();
             attacking = false;
             chargePointCheck = false;
             rb.velocity = Vector2.zero;
+            isCharging = false;
             animator.SetBool("Charging", false);
             ApplyStun(stunDuration);
             nextAttack = attackCooldown + Time.time;
         }
+        else if ((collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Enemy")) && animator.GetBool("Charging"))
+        {
+            attacking = false;
+            chargePointCheck = false;
+            rb.velocity = Vector2.zero;
+            isCharging = false;
+            animator.SetBool("Charging", false);
+            ApplyStun(stunDuration);
+            nextAttack = attackCooldown + Time.time;
+        }
+        Debug.Log("Hit" + collision.gameObject.name);
     }
 
     // Actualitza el camí del enemic

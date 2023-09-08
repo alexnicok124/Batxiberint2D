@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 5912611692697916166}
   m_Layer: 7
   m_Name: Charging Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,6 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   viu: 1
+  deadEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &5912611692697916166
 MonoBehaviour:
   m_ObjectHideFlags: 0

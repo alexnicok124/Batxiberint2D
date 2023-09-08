@@ -7,6 +7,7 @@ public class HealthEnemy : MonoBehaviour
     public int maxHealth;
     int currentHealth;
     public bool viu = true;
+    public LayerMask deadEnemyLayer;
     Animator animator;
     new Rigidbody2D rigidbody;
     Transform transform;
@@ -39,6 +40,7 @@ public class HealthEnemy : MonoBehaviour
         viu = false;
         EnemySpawner.numberOfEnemys--;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.01f);
+        transform.gameObject.layer = deadEnemyLayer;
         this.enabled = false;
     }
 }

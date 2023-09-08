@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5207580740116362571}
   m_Layer: 7
   m_Name: Shooting Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   viu: 1
+  deadEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &3291057633385885574
 Animator:
   serializedVersion: 5
