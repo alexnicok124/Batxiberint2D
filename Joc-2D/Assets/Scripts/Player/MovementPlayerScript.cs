@@ -22,7 +22,7 @@ public class MovementPlayerScript : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.LeftShift) && PlayerCanSprint){ //con el ratón funciona, pero en realidad el clic izquierdo es para atacar
             ManageSprintMovement();
-            Debug.Log("sprinting");
+            //Debug.Log("sprinting");
         }
         else{
             ManageWalkingIdle(); 

@@ -3,11 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class winMessage : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (other.CompareTag("Player")) 
+        Debug.Log("Hit");
+        if (collision.tag == "Player") 
         {
             SceneManager.LoadScene("MenuVictoria");
         }       
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit");
+        if (collision.tag == "Player")
+        {
+            SceneManager.LoadScene("MenuVictoria");
+        }
     }
 }
