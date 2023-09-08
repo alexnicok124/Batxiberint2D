@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
     public int maxHealth;
     int currentHealth;
     public HealthBar healthBar; 
+    public GameManagerScript gameManagerScript;
+    bool isDead = false;
 
     private void Start()
     {
@@ -21,8 +23,9 @@ public class Health : MonoBehaviour
         // Posar animaci� de treure vida
         healthBar.SetHealth(currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
             Die();
         }
     }
@@ -33,11 +36,8 @@ public class Health : MonoBehaviour
 
         // Die animation
 
-        ////GetComponent<Collider2D>().enabled = false;
-        //GetComponent<MovementPlayerScript>().enabled = false;
-        //GetComponent<Attack>().enabled = false;
-        //GetComponent<Pointing>().enabled = false;
-        //GetComponent<Stamina>().enabled = false;
-        //this.enabled = false;
+        //GetComponent<Collider2D>().enabled = false;
+        gameManagerScript.GameOver();
+        this.enabled = false;
     }
 }
