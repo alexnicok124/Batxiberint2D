@@ -9,8 +9,9 @@ public class Attack : MonoBehaviour
     public int AttackDamage = 30; //la vida es de 100.
     public float AttackRange = 0.5f; 
     public LayerMask enemyLayers; 
-    public Rigidbody2D rbody; 
-    public Transform AttackPoint; 
+    public Rigidbody2D rbody;
+    public Transform sword;
+    public Transform attackPoint; 
 
     public float cooldown = 0.5f; //cooldown
     private float nextAttackTime = 0f; //esto es un default, va variando. 
@@ -27,9 +28,9 @@ public class Attack : MonoBehaviour
 
 #pragma warning disable IDE1006 // Estilos de nombres
     void attack(){
-        AttackPoint.GetComponent<Animator>().SetTrigger("Attack");
+        sword.GetComponent<Animator>().SetTrigger("Attack");
         Debug.Log("Attacked");
-        Collider2D[] hitenemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, enemyLayers); 
+        Collider2D[] hitenemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers); 
         
         foreach(Collider2D enemy in hitenemies){
             Debug.Log("we hit" + enemy.name);
@@ -43,8 +44,8 @@ public class Attack : MonoBehaviour
 #pragma warning restore IDE1006 // Estilos de nombres
 
     void OnDrawGizmosSelected(){
-        if(AttackPoint == null)
+        if(attackPoint == null)
             return; 
-        Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, AttackRange);
     }
 }

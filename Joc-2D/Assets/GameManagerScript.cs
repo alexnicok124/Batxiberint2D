@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
-    
+
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
     public void GameOver()
     {
         gameOverUI.SetActive(true);
