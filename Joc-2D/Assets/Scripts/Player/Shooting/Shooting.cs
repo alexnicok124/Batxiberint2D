@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform FirePoint;  
+    public Transform FirePoint;  //en la punta del objecte pistola, asignar el hijo de player = gun 
     public GameObject BulletPrefab; 
-    public UpdateBullets bulletsscript; 
-    public bool CanShoot = true; 
 
-    public float cooldown = 0.3f; 
+
+
+
+    public float cooldown = 0.3f; //cooldown
     private float nextAttackTime = 0f;
     void Update(){
 
-        if(Time.time >= nextAttackTime){
-            if(Input.GetMouseButton(0) && bulletsscript.Bullets > 0 && CanShoot){
+        if(Time.time >= nextAttackTime){//this if and more things implementa el cooldown
+            if(Input.GetMouseButton(0)){//botó esquerra del ratolí per a atacar. 
                 Shoot(); 
                 nextAttackTime = Time.time + cooldown; 
             }
@@ -25,8 +26,6 @@ public class Shooting : MonoBehaviour
 
     void Shoot(){
         FirePoint.GetComponent<Animator>().SetTrigger("Shoot");
-        Instantiate(BulletPrefab, FirePoint.position, transform.rotation); 
-        bulletsscript.Bullets--; 
+        Instantiate(BulletPrefab, FirePoint.position, transform.rotation); //mirar si la rotación está bien, como sea. 
     }
-    
 }

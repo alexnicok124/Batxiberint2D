@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5311861259510180731}
   - component: {fileID: 5217945427031711513}
   - component: {fileID: 7508324932745347428}
-  - component: {fileID: 8512065822892747500}
   m_Layer: 6
   m_Name: Wall L
   m_TagString: Obstacle
@@ -131,36 +130,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 1.21}
   m_EdgeRadius: 0
---- !u!114 &8512065822892747500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687232149891907788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.110000014, y: -0.605, z: 0}
-  - {x: -0.110000014, y: 0.605, z: 0}
-  - {x: 0.110000014, y: 0.605, z: 0}
-  - {x: 0.110000014, y: -0.605, z: 0}
-  m_ShapePathHash: 0
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 55528
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.110000014, y: 0.605, z: 0}
 --- !u!1 &2771448951318545701
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +141,6 @@ GameObject:
   - component: {fileID: 3961508026644622046}
   - component: {fileID: 4085585302986887601}
   - component: {fileID: 8673338678095698185}
-  - component: {fileID: 8747924772345236014}
   m_Layer: 6
   m_Name: Wall R
   m_TagString: Obstacle
@@ -292,36 +260,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 1.21}
   m_EdgeRadius: 0
---- !u!114 &8747924772345236014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2771448951318545701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.110000014, y: -0.605, z: 0}
-  - {x: -0.110000014, y: 0.605, z: 0}
-  - {x: 0.110000014, y: 0.605, z: 0}
-  - {x: 0.110000014, y: -0.605, z: 0}
-  m_ShapePathHash: 0
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 55532
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.110000014, y: 0.605, z: 0}
 --- !u!1 &3089263592125697857
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,8 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4431380105709840445}
   - component: {fileID: 1853280061449007380}
-  - component: {fileID: 1400012895054205287}
-  - component: {fileID: 7724568198468567362}
+  - component: {fileID: 8335206590159585483}
   m_Layer: 6
   m_Name: Wall U
   m_TagString: Obstacle
@@ -349,13 +286,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3089263592125697857}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3311888714932304179}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1853280061449007380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -397,7 +334,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d8bf45d481c5704c9e78c42954195d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79e73964a268a0d46aebcd8779a67d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -408,37 +345,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1400012895054205287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3089263592125697857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.60499996, y: -0.110000044, z: 0}
-  - {x: -0.60499996, y: 0.110000074, z: 0}
-  - {x: 0.60499996, y: 0.110000074, z: 0}
-  - {x: 0.60499996, y: -0.110000044, z: 0}
-  m_ShapePathHash: 0
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 55488
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0.000000014901161, z: 0}
-    m_Extent: {x: 0.60499996, y: 0.11000006, z: 0}
---- !u!61 &7724568198468567362
+--- !u!61 &8335206590159585483
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,14 +381,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.21, y: 0.22}
+    oldSize: {x: 0.22, y: 1.21}
     newSize: {x: 0.22, y: 1.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.21, y: 0.22}
+  m_Size: {x: 0.22, y: 1.21}
   m_EdgeRadius: 0
 --- !u!1 &4999703965775965610
 GameObject:
@@ -545,8 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5743869580662401472}
   - component: {fileID: 7848183096366052391}
-  - component: {fileID: 6908572491189145377}
-  - component: {fileID: 4168896371444298177}
+  - component: {fileID: 5198053222892043585}
   m_Layer: 6
   m_Name: Wall D
   m_TagString: Obstacle
@@ -562,13 +468,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6136090091794571124}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3311888714932304179}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &7848183096366052391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -610,7 +516,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d8bf45d481c5704c9e78c42954195d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79e73964a268a0d46aebcd8779a67d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -621,37 +527,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6908572491189145377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6136090091794571124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.60499996, y: -0.110000074, z: 0}
-  - {x: -0.60499996, y: 0.110000044, z: 0}
-  - {x: 0.60499996, y: 0.110000044, z: 0}
-  - {x: 0.60499996, y: -0.110000074, z: 0}
-  m_ShapePathHash: 0
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 55518
-  m_LocalBounds:
-    m_Center: {x: 0, y: -0.000000014901161, z: 0}
-    m_Extent: {x: 0.60499996, y: 0.11000006, z: 0}
---- !u!61 &4168896371444298177
+--- !u!61 &5198053222892043585
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -687,12 +563,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.21, y: 0.22}
+    oldSize: {x: 0.22, y: 1.21}
     newSize: {x: 0.22, y: 1.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.21, y: 0.22}
+  m_Size: {x: 0.22, y: 1.21}
   m_EdgeRadius: 0
