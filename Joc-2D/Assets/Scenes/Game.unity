@@ -597,7 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootingScript: {fileID: 52653128}
   Bullets: 0
-  MaxBullets: 10
+  MaxBullets: 6
   Bar: {fileID: 1844973864}
   UIobject: {fileID: 1844973862}
 --- !u!1 &93754774
