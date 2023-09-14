@@ -9,7 +9,7 @@ public class HealthEnemy : MonoBehaviour
     public bool viu = true;
     public LayerMask deadEnemyLayer;
     Animator animator;
-    new Rigidbody2D rigidbody;
+    Rigidbody2D rigidbody;
     new Transform transform;
     EnemySpawner EnemySpawner;
 
