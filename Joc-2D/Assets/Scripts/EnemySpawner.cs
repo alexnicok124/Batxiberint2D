@@ -48,12 +48,10 @@ public class EnemySpawner : MonoBehaviour
             spawnPosY = transform.position.y + Random.Range(-mapLenght, mapLenght);
         
         Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
-        Debug.Log("SpawnPosition:" + spawnPos);
 
 
         Spawn(enemyToSpawn, spawnPos);
         numberOfEnemys++;
-        Debug.Log("Quantitat d'enemics:" + numberOfEnemys);
     }
 
 

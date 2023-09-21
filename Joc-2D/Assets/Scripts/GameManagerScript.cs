@@ -13,6 +13,15 @@ public class GameManagerScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        Player.GetComponent<MovementPlayerScript>().enabled = true;
+        Player.GetComponent<Attack>().enabled = true;
+        Player.GetComponent<Pointing>().enabled = true;
+        Player.GetComponent<Stamina>().enabled = true;
+        Player.GetComponent<Health>().enabled = true;
+        Player.GetComponent<Dashing>().enabled = true;
+        Player.GetComponent<WeaponManager>().enabled = true;
+        Player.GetComponent<Shooting>().enabled = true;
+        Player.GetComponent<UpdateBullets>().enabled = true;
     }
 
     private void Update()
@@ -34,6 +43,15 @@ public class GameManagerScript : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
+        Player.GetComponent<MovementPlayerScript>().enabled = false;
+        Player.GetComponent<Attack>().enabled = false;
+        Player.GetComponent<Pointing>().enabled = false;
+        Player.GetComponent<Stamina>().enabled = false;
+        Player.GetComponent<Health>().enabled = false;
+        Player.GetComponent<Dashing>().enabled = false;
+        Player.GetComponent<WeaponManager>().enabled = false;
+        Player.GetComponent<Shooting>().enabled = false;
+        Player.GetComponent<UpdateBullets>().enabled = false;
     }
 
     public void Sortir()

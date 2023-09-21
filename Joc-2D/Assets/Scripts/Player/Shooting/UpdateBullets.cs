@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class UpdateBullets : MonoBehaviour
 {
-    public Shooting ShootingScript; 
+    public Shooting ShootingScript;
+    public GameObject[] ammoUI;
 
-    private float LoadingTime = 1.2f; 
+    public float LoadingTime = 1.2f; 
     private float endLoadingTime = 0.0f;
-    private bool flagonetime = true; 
+    private bool flagonetime = true;
+    public bool hasShoot = false;
     public int Bullets;
-    public int MaxBullets = 10; 
+    public int MaxBullets = 10;
+    public int bulletsPerReload = 1;
 
     public BulletBar Bar; 
     public GameObject UIobject; 
@@ -25,13 +28,18 @@ public class UpdateBullets : MonoBehaviour
     
     void Update()
     {
-        LoadingBullets(); 
+        LoadingBullets();
+        if (hasShoot)
+        {
+            hasShoot = false;
+            ammoUI[Bullets].SetActive(false);
+        }
     }
 
     private float Timer = 0.0f; //per a la barra
     void LoadingBullets()
     {
-        if(Input.GetKey(KeyCode.R))
+        if(Input.GetKey(KeyCode.R) && Bullets != MaxBullets)
         {
             UIobject.SetActive(true); 
             ShootingScript.CanShoot = false; 
@@ -43,10 +51,11 @@ public class UpdateBullets : MonoBehaviour
             Bar.SetTime(Timer);
             
             if(Time.time > endLoadingTime){
-                Bullets += 5; 
+                Bullets += bulletsPerReload; 
                 if(Bullets > MaxBullets){
                     Bullets = MaxBullets; 
                 }
+                ammoUI[Bullets-1].SetActive(true);
                 Timer = 0.0f; 
 
                 flagonetime = true; //set next time attack

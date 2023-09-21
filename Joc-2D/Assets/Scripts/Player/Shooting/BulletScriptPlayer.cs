@@ -17,13 +17,16 @@ public class BulletScriptPlayer : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D HitInfo){
-        Destroy(gameObject);
-
         if (HitInfo.GetComponent<HealthEnemy>() != null)
         {
             HitInfo.GetComponent<HealthEnemy>().TakeDamage(damage); 
         }
+        Destroy(gameObject);
     }
 
+    public void SelfDestroy()
+    {
+        Destroy(gameObject);
+    }
     
 }

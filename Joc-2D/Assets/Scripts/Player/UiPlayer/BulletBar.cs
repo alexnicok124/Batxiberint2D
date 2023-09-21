@@ -8,11 +8,9 @@ public class BulletBar : MonoBehaviour
     
     public void SetMaxTime(float LoadingTime){
         slider.maxValue = LoadingTime;
-        
     }
 
     public void SetTime(float CurrentLoading){
         slider.value = CurrentLoading; 
-    
     }
 }

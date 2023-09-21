@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform FirePoint;  
+    public Transform FirePoint;
     public GameObject BulletPrefab; 
     public UpdateBullets bulletsscript; 
     public bool CanShoot = true; 
@@ -26,7 +26,8 @@ public class Shooting : MonoBehaviour
     void Shoot(){
         FirePoint.GetComponent<Animator>().SetTrigger("Shoot");
         Instantiate(BulletPrefab, FirePoint.position, transform.rotation); 
-        bulletsscript.Bullets--; 
+        bulletsscript.Bullets--;
+        bulletsscript.hasShoot = true;
     }
     
 }

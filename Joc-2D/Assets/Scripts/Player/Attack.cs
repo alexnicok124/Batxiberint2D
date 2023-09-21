@@ -17,7 +17,6 @@ public class Attack : MonoBehaviour
     private float nextAttackTime = 0f; //esto es un default, va variando. 
     void Update()
     {
-        
         if(Time.time >= nextAttackTime){//this if and more things implementa el cooldown
             if(Input.GetMouseButton(0)){//botó esquerra del ratolí per a atacar. 
                 attack(); 
@@ -32,11 +31,15 @@ public class Attack : MonoBehaviour
         Debug.Log("Attacked");
         Collider2D[] hitenemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers); 
         
-        foreach(Collider2D enemy in hitenemies){
-            Debug.Log("we hit" + enemy.name);
+        foreach(Collider2D enemy in hitenemies)
+        {
             if (enemy.GetComponent<HealthEnemy>() != null)
             {
                 enemy.GetComponent<HealthEnemy>().TakeDamage(AttackDamage);
+            }
+            if (enemy.name == "Projectile")
+            {
+                enemy.GetComponent<Projectile>().DestroyProjectile();
             }
         }
 

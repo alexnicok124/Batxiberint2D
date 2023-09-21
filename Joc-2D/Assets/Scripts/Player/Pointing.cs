@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Pointing : MonoBehaviour
 {
-    private Vector3 MouseTarget; 
-    public Camera camera; 
+    private Vector3 MouseTarget;
+    public new Camera camera;
     //este escript es para el jugador. 
     public float RotationMouse = 0; //angulo que tiene que rotar
     public float Degrees; 

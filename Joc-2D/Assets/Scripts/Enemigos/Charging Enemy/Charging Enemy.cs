@@ -259,7 +259,6 @@ public class ChargingEnemy : MonoBehaviour
             ApplyStun(stunDuration);
             nextAttack = attackCooldown + Time.time;
         }
-        Debug.Log("Hit" + collision.gameObject.name);
     }
 
     // Actualitza el camí del enemic
