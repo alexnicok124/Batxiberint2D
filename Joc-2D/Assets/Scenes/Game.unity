@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 52653122}
   AttackDamage: 20
-  AttackRange: 1
+  AttackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1152
@@ -480,6 +480,7 @@ MonoBehaviour:
   bulletsPerReload: 1
   Bar: {fileID: 1844973864}
   UIobject: {fileID: 1844973862}
+  gunAnimator: {fileID: 1970760732}
 --- !u!1 &62941510
 GameObject:
   m_ObjectHideFlags: 0

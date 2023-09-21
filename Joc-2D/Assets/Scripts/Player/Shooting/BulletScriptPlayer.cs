@@ -24,9 +24,5 @@ public class BulletScriptPlayer : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SelfDestroy()
-    {
-        Destroy(gameObject);
-    }
     
 }

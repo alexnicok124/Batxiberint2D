@@ -10,13 +10,15 @@ public class UpdateBullets : MonoBehaviour
     public float LoadingTime = 1.2f; 
     private float endLoadingTime = 0.0f;
     private bool flagonetime = true;
+    bool reloading = false;
     public bool hasShoot = false;
     public int Bullets;
     public int MaxBullets = 10;
     public int bulletsPerReload = 1;
 
     public BulletBar Bar; 
-    public GameObject UIobject; 
+    public GameObject UIobject;
+    public Animator gunAnimator;
 
 
     void Start()
@@ -39,7 +41,7 @@ public class UpdateBullets : MonoBehaviour
     private float Timer = 0.0f; //per a la barra
     void LoadingBullets()
     {
-        if(Input.GetKey(KeyCode.R) && Bullets != MaxBullets)
+        if(Input.GetKey(KeyCode.R) && Bullets != MaxBullets && !reloading)
         {
             UIobject.SetActive(true); 
             ShootingScript.CanShoot = false; 
@@ -47,17 +49,20 @@ public class UpdateBullets : MonoBehaviour
                 endLoadingTime = Time.time + LoadingTime; 
                 flagonetime = false; 
             }
-            Timer += Time.deltaTime; 
+            Timer += Time.deltaTime;
             Bar.SetTime(Timer);
             
-            if(Time.time > endLoadingTime){
+            if(Time.time > endLoadingTime)
+            {
+                gunAnimator.SetTrigger("Reload");
                 Bullets += bulletsPerReload; 
                 if(Bullets > MaxBullets){
                     Bullets = MaxBullets; 
                 }
                 ammoUI[Bullets-1].SetActive(true);
-                Timer = 0.0f; 
+                Timer = 0.0f;
 
+                reloading = true;
                 flagonetime = true; //set next time attack
             }
 
@@ -67,6 +72,7 @@ public class UpdateBullets : MonoBehaviour
             ShootingScript.CanShoot = true; 
             UIobject.SetActive(false);  
             Timer = 0.0f; 
+            reloading = false;
         }
     }
 }

@@ -28,7 +28,6 @@ public class Attack : MonoBehaviour
 #pragma warning disable IDE1006 // Estilos de nombres
     void attack(){
         sword.GetComponent<Animator>().SetTrigger("Attack");
-        Debug.Log("Attacked");
         Collider2D[] hitenemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers); 
         
         foreach(Collider2D enemy in hitenemies)
@@ -37,8 +36,9 @@ public class Attack : MonoBehaviour
             {
                 enemy.GetComponent<HealthEnemy>().TakeDamage(AttackDamage);
             }
-            if (enemy.name == "Projectile")
+            if (enemy.CompareTag("Projectile"))
             {
+                Debug.Log("Cut the projectile");
                 enemy.GetComponent<Projectile>().DestroyProjectile();
             }
         }
