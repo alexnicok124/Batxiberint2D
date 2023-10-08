@@ -17,7 +17,7 @@ public class Pointing : MonoBehaviour //classe que gestiona les animacions i la 
     //update: es crida cada frame: 
     void Update()
     {
-        //activem la rotació segons l'entrada:
+        //activem la rotació (ratolí esquerra)
         if(Input.GetMouseButton(1)){ 
             ManageMouseRotation(); 
             
