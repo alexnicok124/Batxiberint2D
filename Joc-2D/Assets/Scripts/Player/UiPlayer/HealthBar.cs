@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI; 
 public class HealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //slider
     public Slider slider; 
+
+    //colors
     public Gradient gradient; 
     public Image fill; 
     
+    //mètodes
     public void SetMaxHealth(int MaxHealth){
         slider.maxValue = MaxHealth;
         slider.value = MaxHealth;

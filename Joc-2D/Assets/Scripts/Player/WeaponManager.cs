@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour //como un inventario donde manejo todas las armas
+public class WeaponManager : MonoBehaviour 
 {
-    //asignar al jugador, queda per fer-ho. 
-    public GameObject SwordObject, GunObject;
+    //imatges de la espasa i pistola, per activar o desactivar
+    public GameObject SwordObject, GunObject; 
+
+    //scripts per desactivar
     public Attack MeleeAttack;
     public Shooting ShootingScript;
+
+    //variables booleanes:
     private bool ActSword = false, ActGun = false; 
+
+    //Activem la espassa per defecte
     void Start(){
         ActSword = true; 
         MeleeAttack = GetComponent<Attack>(); 
@@ -17,8 +23,8 @@ public class WeaponManager : MonoBehaviour //como un inventario donde manejo tod
 
     void Update()
     {
-        
-        if(Input.GetKeyDown(KeyCode.Alpha1)){ //1, 2, 3, como el inventario del minecraft que te permite seleccionar cada cosa. 
+        //seleccionar amb 1 = espasa o 2 = pistola l'arma de joc
+        if(Input.GetKeyDown(KeyCode.Alpha1)){  
             ActSword = true; 
             ActGun = false;
             Debug.Log("Espasa seleccionada");
@@ -29,7 +35,8 @@ public class WeaponManager : MonoBehaviour //como un inventario donde manejo tod
             Debug.Log("Pistola seleccionada"); 
         }
 
-        if(Input.GetMouseButton(1)){ // solo se puede atacar si estoy apuntando antes, cuando apunto, me aparecen las armas. 
+        //activem l'arma seleccionada
+        if(Input.GetMouseButton(1)){ 
             if(ActSword){
                 ActivateSword();
             }
@@ -37,16 +44,21 @@ public class WeaponManager : MonoBehaviour //como un inventario donde manejo tod
                 ActivateGun(); 
             }
         }
+        //en el cas de que no estigui en posició d'atac:
         else{
+            //es desactiva tot: 
             DisableAll(); 
         }
     }
 
-    void ActivateSword(){
+
+
+    //mètodes: 
+    void ActivateSword(){ 
         SwordObject.SetActive(true); 
         GunObject.SetActive(false); 
         MeleeAttack.enabled = true;
-        ShootingScript.enabled = false;  //Desactivo aquest script per a que no pugui tener el comportament d'atacar.
+        ShootingScript.enabled = false;  
     }
     void ActivateGun(){
         GunObject.SetActive(true); 

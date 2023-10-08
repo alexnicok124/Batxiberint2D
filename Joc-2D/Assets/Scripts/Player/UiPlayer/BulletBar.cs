@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI; 
 public class BulletBar : MonoBehaviour
 {
+    //slider
     public Slider slider; 
     
+    //mètodes
     public void SetMaxTime(float LoadingTime){
         slider.maxValue = LoadingTime;
     }

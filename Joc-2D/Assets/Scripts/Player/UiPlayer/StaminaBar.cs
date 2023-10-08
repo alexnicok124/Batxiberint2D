@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI; 
 public class StaminaBar : MonoBehaviour
 {
+    //slider
     public Slider slider; 
      
-    
+    //mètodes
     public void SetMaxStamina(float MaxStamina){
         slider.maxValue = MaxStamina;
         

@@ -2,36 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pointing : MonoBehaviour
+public class Pointing : MonoBehaviour //classe que gestiona les animacions i la rotació quan apunta: 
 {
+    //variables internes: 
     private Vector3 MouseTarget;
     public new Camera camera;
-    //este escript es para el jugador. 
-    public float RotationMouse = 0; //angulo que tiene que rotar
+    
+    public float RotationMouse = 0; 
     public float Degrees; 
-    //puedo hacer que en start, la rotacion por defecto sea 0
 
     public Dashing DashingScript; 
-
     public Animator animator; 
+
+    //update: es crida cada frame: 
     void Update()
     {
-        if(Input.GetMouseButton(1)){ // si pulsa el botón derecho del ratón, se pone en modo apuntar. 
+        //activem la rotació segons l'entrada:
+        if(Input.GetMouseButton(1)){ 
             ManageMouseRotation(); 
             
         }
+        //si no apunta: 
         else{
-            //animator.SetTrigger("StopPointingTrigger"); //no sé si está optimizado, canviar por un booleano ? per ara si camines pots sortir.
+            //eliminem la rotació: 
             transform.rotation = Quaternion.Euler(0, 0, 0); 
         }
         
     }
 
     void ManageMouseRotation(){
+        //animacions: 
         if(!DashingScript.PlayerIsDashing){
           animator.SetTrigger("TriggerPointing");   
         }
         
+        //calculem l'angle que ha de rotar segons la posició del ratolí: 
         MouseTarget = camera.ScreenToWorldPoint(Input.mousePosition); 
         RotationMouse = Mathf.Atan2((MouseTarget.y - transform.position.y), 
         (MouseTarget.x - transform.position.x));

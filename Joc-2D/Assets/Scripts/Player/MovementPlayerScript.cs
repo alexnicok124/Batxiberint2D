@@ -4,45 +4,52 @@ using UnityEngine;
 
 public class MovementPlayerScript : MonoBehaviour
 {
-    private float movespeed = 4.0f; 
-    public float default_speed = 4.0f;
-    public Rigidbody2D rbody;
-    Vector2 movement;
-    public Animator animator;
+    private float movespeed = 4.0f; //velocitat de moviment
+    public float default_speed = 4.0f; //velocitat per defecte
+    public Rigidbody2D rbody; //cos físic 2d del personatge
+    Vector2 movement; //entrada de dades
+    public Animator animator; //animacions
+
     private Vector2 direction = new Vector2(0, 0); 
-    public bool PlayerCanSprint; //variable que permite sprintear
-    public Dashing DashingScript; //es para que cuando asigne la rbody = v, el rbody.moveposition no lo paralice, quiero probar con eso. 
+    //direction: variable que permet algunes animacions més complicades
+
+    public bool PlayerCanSprint; //està sprinteant?
+    public Dashing DashingScript; //referència a classe
     
-    void Update() => ManageMovementInput();
+
+    //mètode update, es crida cada frame: 
+    void Update() => ManageMovementInput(); 
 
 
     void ManageMovementInput(){
-        if(Input.GetMouseButton(1)){
+        if(Input.GetMouseButton(1)){ //si apunta:
             ManagePointingMovement(); 
         }
-        else if(Input.GetKey(KeyCode.LeftShift) && PlayerCanSprint){ //con el ratón funciona, pero en realidad el clic izquierdo es para atacar
+        else if(Input.GetKey(KeyCode.LeftShift) && PlayerCanSprint){ //si fa sprint:
             ManageSprintMovement();
-            //Debug.Log("sprinting");
         }
-        else{
+        else{ //per defecte: caminant i quiet
             ManageWalkingIdle(); 
         }
     }
 
 
-    void ManageWalkingIdle(){ //walking and idle
+    void ManageWalkingIdle(){ //caminar i quiet
+        //assignació de la velocitat
         movespeed = default_speed; 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical"); 
         movement = movement.normalized; 
         
         
-        if(movement == Vector2.zero){ //manage idle
+        //gestió de les animacions: 
+
+        if(movement == Vector2.zero){ //si no hi ha moviment: posició quieta: 
             animator.SetTrigger("Idle"); 
             animator.SetFloat("HorizontalDirection", direction.x);
             animator.SetFloat("VerticalDirection", direction.y); 
         }
-        else{ //manage walking
+        else{ //si no: caminant
             direction = movement; 
             animator.SetTrigger("Walking"); 
             animator.SetFloat("Horizontal", movement.x);
@@ -53,11 +60,15 @@ public class MovementPlayerScript : MonoBehaviour
         }
     }
 
+    //en el cas de que apunti: 
     void ManagePointingMovement(){
+        //assignació de la velocitat 
          movespeed = default_speed/2.0f; 
          movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical"); 
-         movement = movement.normalized; 
+         movement = movement.normalized;
+
+        //dades útils per les animacions
          if(movement != Vector2.zero){
             direction = movement; 
          }
@@ -65,30 +76,31 @@ public class MovementPlayerScript : MonoBehaviour
     }
 
     void ManageSprintMovement(){ 
-        //animator.SetTrigger("Sprinting"); voy a probar para arreglar bug
+        //assignació de la velocitat: 
         movespeed = default_speed * 3.0f; 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical"); 
         movement = movement.normalized; 
-        if(movement != Vector2.zero){
+
+        //gestió de les animacions: 
+        if(movement != Vector2.zero){ //si hi ha moviment: 
             animator.SetTrigger("Sprinting");
             direction = movement; 
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
         }
-        else{
+        else{//si no: el personatge està quiet: 
             ManageWalkingIdle();  
         }
         
     }
 
+    //un cop es crida Update, i s'assigna la velocitat i el moviment, 
+    //cridem FixedUpdate per moure el personatge
     void FixedUpdate(){ 
-        if(!DashingScript.PlayerIsDashing){  //dashing + este script son las unicas cosas cambiadas creo.
+        if(!DashingScript.PlayerIsDashing){  //si està dasheant es desactiva el mètode. 
+            //es fa moure al personatge en funció de la velocitat movespeed
             rbody.MovePosition(rbody.position + movement * movespeed * Time.fixedDeltaTime); 
-        } //pues sí, me ha funcionado, que alegria mi vida
-        /*
-        apuntar esto: 
-        es posible que el rbody.MovePosition cause problemas a veces.
-        */
+        } 
     }   
 }

@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    //variables de salud: 
     public int maxHealth;
     int currentHealth;
-    public HealthBar healthBar; 
-    public GameManagerScript gameManagerScript;
-    bool isDead = false;
 
+    //barra de vida: 
+    public HealthBar healthBar; 
+
+    //desactivar el personatge: mort
+    public GameManagerScript gameManagerScript;
+    bool isDead = false; 
+
+    //start es crida al principi. 
+    //Configurem la salud i la barra: 
     private void Start()
     {
+        
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
+    //rebre dany dels enemics
     public void TakeDamage (int Damage)
     {
         currentHealth -= Damage;
         Debug.Log(currentHealth);
-        // Posar animaci� de treure vida
+        
         healthBar.SetHealth(currentHealth);
 
+        //condició de mort: 
         if (currentHealth <= 0 && !isDead)
         {
             isDead = true;
@@ -30,13 +40,11 @@ public class Health : MonoBehaviour
         }
     }
 
+    //mètode per morir: 
     void Die ()
     {
         Debug.Log("Has Mort");
 
-        // Die animation
-
-        //GetComponent<Collider2D>().enabled = false;
         gameManagerScript.GameOver();
         this.enabled = false;
     }
