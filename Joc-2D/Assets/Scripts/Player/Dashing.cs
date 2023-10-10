@@ -87,9 +87,12 @@ public class Dashing : MonoBehaviour
 
     //fixed update: el cridem després d'update: 
     void FixedUpdate(){
-        if(PlayerIsDashing){ //assignem una velocitat:  
+        //si està dasheant: 
+        if(PlayerIsDashing){ 
+            //establim una velocitat:  
             rbody.velocity = Velocity * DashSpeed;        
         }
+        //si no: 
         else{
             //aturem el moviment: 
             rbody.velocity = new Vector2(0f, 0f); 
