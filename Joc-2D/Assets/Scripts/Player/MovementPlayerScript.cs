@@ -10,6 +10,13 @@ public class MovementPlayerScript : MonoBehaviour
     Vector2 movement; //entrada de dades
     public Animator animator; //animacions
 
+=======
+    private float movespeed = 4.0f; 
+    public float default_speed = 4.0f;
+    public Rigidbody2D rbody;
+    public Vector2 movement;
+    public Animator animator;
+>>>>>>> Stashed changes
     private Vector2 direction = new Vector2(0, 0); 
     //direction: variable que permet algunes animacions més complicades
 

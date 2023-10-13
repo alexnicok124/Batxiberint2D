@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
@@ -73,7 +74,7 @@ public class ShootingEnemy : MonoBehaviour
         }
         RaycastHit2D hit = Physics2D.Linecast(rb.position, target.position, layerMask);
         // Seleccionador de quin estat està l'enemic
-        if (Vector2.Distance(rb.position, target.position) <= detectionRange) //chasing l'enemic
+        if (Vector2.Distance(rb.position, target.position) <= detectionRange && target.GetComponent<MovementPlayerScript>().movement != Vector2.zero) //chasing l'enemic
         {
             chasing = true;
             wandering = false;
@@ -90,7 +91,7 @@ public class ShootingEnemy : MonoBehaviour
                 attacking = false;
             }
         }
-        if (Vector2.Distance(rb.position, target.position) < attackRange && hit.collider.gameObject.name == "Player") // Comprobar si el jugador està a suficient distancia per attacking-lo
+        if (Vector2.Distance(rb.position, target.position) < attackRange && hit.collider.gameObject.name == "Player" && target.GetComponent<MovementPlayerScript>().movement != Vector2.zero) // Comprobar si el jugador està a suficient distancia per attacking-lo
         {
             chasing = false;
             wandering = false;
@@ -165,11 +166,11 @@ public class ShootingEnemy : MonoBehaviour
             }
 
             //Condicions per que el enemic es mogui
-            if (Vector2.Distance(rb.position, target.position) >= stopDistance | hit.collider.gameObject.name != "Player")
+            if (Vector2.Distance(rb.position, target.position) >= stopDistance | hit.collider.gameObject.name != "Player" | target.GetComponent<MovementPlayerScript>().movement == Vector2.zero)
             {
                 rb.AddForce(force);
             }
-            if (Vector2.Distance(rb.position, target.position) <= retreatDistance && hit.collider.gameObject.name == "Player")
+            if (Vector2.Distance(rb.position, target.position) <= retreatDistance && hit.collider.gameObject.name == "Player" && target.GetComponent<MovementPlayerScript>().movement != Vector2.zero)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, -retreatSpeed * Time.deltaTime);
             }
@@ -223,6 +224,12 @@ public class ShootingEnemy : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        chasing = false;
+        wandering = false;
+        attacking = true;
     }
 
     IEnumerator Attack()

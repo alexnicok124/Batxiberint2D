@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   default_speed: 4
   rbody: {fileID: 52653121}
+  movement: {x: 0, y: 0}
   animator: {fileID: 52653122}
   PlayerCanSprint: 0
   DashingScript: {fileID: 52653127}
