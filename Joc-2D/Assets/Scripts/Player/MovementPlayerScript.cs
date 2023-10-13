@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementPlayerScript : MonoBehaviour
 {
+<<<<<<< Updated upstream
     private float movespeed = 4.0f; //velocitat de moviment
     public float default_speed = 4.0f; //velocitat per defecte
     public Rigidbody2D rbody; //cos físic 2d del personatge
