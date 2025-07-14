@@ -1,0 +1,1 @@
+Esta versión de batxiberint está incompleta, ya que es para mostrar el código, y evitar problemas de seguridad. La versión jugable de nuestro proyecto está alojada en el enlace https://galactrel.itch.io/batxiberint
